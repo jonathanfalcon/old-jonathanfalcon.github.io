@@ -1,0 +1,103 @@
+---
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import 'katex/';
+
+import PostTags from '~/components/blog/Tags.astro';
+import SocialShare from '~/components/common/SocialShare.astro';
+
+import { getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/utils';
+
+import type { Post } from '~/types';
+
+export interface Props {
+  post: Post;
+  url: string | URL;
+}
+
+const { post, url } = Astro.props;
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+      integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+
+<section class="py-8 sm:py-16 lg:py-20 mx-auto">
+  <article>
+    <header class={post.image ? '' : ''}>
+      <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
+        <p class="text-gray-700 dark:text-gray-300">
+          <Icon name="mdi:calendar-month" class="w-4 h-4 inline-block -mt-0.5" />
+          <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
+          {
+            post.category && (
+              <>
+                {' '}
+                –{' '}
+                <a class="capitalize text-spring-green-500 dark:text-spring-green-400 hover:underline" href={getPermalink(post.category, 'category')}>
+                  {post.category.replaceAll('-', ' ')}
+                </a>
+              </>
+            )
+          }
+          {post.readingTime && <> – {post.readingTime} min read</>}
+        </p>
+      </div>
+      <h1
+        class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold font-serif"
+      >
+        {post.title}
+      </h1>
+      <p
+        class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl leading-snug md:text-2xl text-gray-800 dark:text-slate-300"
+      >
+        {post.description}
+      </p>
+
+      {
+        post.image ? (
+          <Picture
+            src={post.image}
+            class="max-w-full lg:max-w-6xl mx-auto md:mb-14 mb-6 min-[910px]:rounded-3xl bg-gray-400 dark:bg-slate-700"
+            widths={[400, 900, 1400, 2000]}
+            sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, (max-width: 2000px) 1400px, 2000px"
+            alt={post.title}
+            loading="eager"
+            aspectRatio={16 / 9}
+            width={900}
+            height={506}
+            format="webp"
+            loading="eager"
+            decoding="async"
+            background={undefined}
+          />
+        ) : (
+          <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <div class="border-t dark:border-slate-700" />
+          </div>
+        )
+      }
+    </header>
+    <div
+      class="mx-auto px-4 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert prose-md prose-headings:font-bold prose-a:duration-200 prose-a:transition prose-a:text-blue-600 hover:prose-a:text-blue-900 dark:hover:prose-a:text-blue-500 dark:prose-a:text-blue-300 prose-img:rounded-2xl prose-img:shadow-lg mt-8 prose-table:table-fixed prose-headings:mb-2.5 prose-h5:mb-0.5 prose-h6:mb-0.5 prose-p:mt-0 prose-h2:uppercase prose-h2:tracking-wide dark:text-inherit text-inherit prose-li:marker:text-inherit dark:prose-li:marker:text-inherit md:prose-h2:text-4xl md:prose-h3:text-3xl md:prose-h4:text-2xl md:prose-h5:text-1.5xl md:prose-h6:text-1.5xl prose-h2:text-2.5xl prose-h3:text-2xl prose-h4:text-1.5xl prose-h5:text-xl prose-h6:text-xl"
+    >
+      {
+        post.Content ? (
+          <>
+            {/* @ts-ignore */}
+            <post.Content />
+          </>
+        ) : (
+          <Fragment set:html={post.content} />
+        )
+      }
+    </div>
+    <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
+      <PostTags tags={post.tags} class="mr-5" />
+      <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
+    </div>
+  </article>
+</section>

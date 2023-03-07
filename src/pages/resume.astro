@@ -1,0 +1,225 @@
+---
+import { SITE } from '~/config.mjs';
+import Layout from '~/layouts/PageLayout.astro';
+import TimeLineWork from "../components/cv/TimelineWork.astro";
+import TimeLineEducation from "../components/cv/TimelineEducation.astro";
+import Certificate from "../components/cv/Certificate.astro";
+import Skill from "../components/cv/Skill.astro";
+import { Icon } from 'astro-icon';
+import Hobby from "../components/cv/Hobby.astro";
+import Headline from "../components/blog/Headline.astro";
+
+const meta = {
+  title: 'Resume',
+  description: SITE.description,
+};
+---
+
+
+<Layout {meta}>
+  <section class="bg-resume dark:bg-resume-dark">
+  <div class="px-4 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl text-xl">
+    <Headline
+    >
+      My Resume
+    </Headline>
+    
+    
+  <div class="mb-4">
+    <h2 class="md:text-4xl text-3xl uppercase tracking-wider w-full font-bold flex flex-row items-center">About Me <Icon name="ph:user-fill" class="md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] ml-5" /></h2>
+  </div>
+
+  <div class="md:mb-20 mb-14">
+    Curiosity drives me; consumer behavior excites me. I will help you understand who your customers are and why they do what they do, so you can better tailor your products/services to exceed business expectations
+  </div>
+
+  <div class="mb-4">
+    <h2 class="md:text-4xl text-3xl uppercase tracking-wider w-full font-bold flex flex-row items-center">Education <Icon name="fluent:hat-graduation-12-filled" class="md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] ml-5" /></h2>
+  </div>
+
+  <div class="grid gap-y-4 md:mb-28 mb-20">
+    <TimeLineEducation
+      title="Master of Science in Marketing"
+      year="2023"
+      subtitle="Texas McCombs School of Business - Austin, TX"
+    />
+    <TimeLineEducation
+      title="Bachelor of Business Administration in Economics"
+      year="2022"
+      subtitle="Texas State University - San Marcos, TX"
+      last=true
+    />
+    <!--<TimeLineEducation
+      title="Associate of Arts"
+      year="2019"
+      subtitle="Brazosport College"
+      last=true
+    />-->
+  </div>
+
+  <div class="mb-4">
+    <h2 class="md:text-4xl text-3xl uppercase tracking-wider w-full font-bold flex flex-row items-center">Experience <Icon name="bi:briefcase-fill" class="md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] ml-5" /></h2>
+  </div>
+
+  <div class="grid gap-y-4 md:mb-28 mb-20">
+    <TimeLineWork
+      title="Position/Job Title"
+      startYear="2019"
+      endYear="2020"
+      subtitle="Name of Company"
+      desc="System multiplatform that includes the steps of a company's personnel, the structure and composition thereof, as well as a powerful designer of credentials and module of control of access. Outspread at the MINFAR and another entities of the country."
+    />
+    <TimeLineWork
+      title="Position/Job Title"
+      startYear="2019"
+      endYear="2020"
+      subtitle="Name of Company"
+      desc="System multiplatform that includes the steps of a company's personnel, the structure and composition thereof, as well as a powerful designer of credentials and module of control of access. Outspread at the MINFAR and another entities of the country. Technologies: C++, Qt Framework, Subversión, Visual Paradigm, PostgreSQL, Jmeter"
+      tech="C++, Qt Framework, Subversión, Visual Paradigm, PostgreSQL, Jmeter"
+      skills="C++, Qt Framework, Subversión, Visual Paradigm, PostgreSQL, Jmeter"
+      last=true
+    />
+  </div>
+
+  <div class="mb-4">
+    <h2 class="md:text-4xl text-3xl uppercase tracking-wider w-full font-bold flex flex-row items-center">Certifications <Icon name="ph:medal-fill" class="md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] ml-5" /></h2>
+  </div>
+
+  <div class="md:mb-20 mb-14 grid gap-y-6">
+    <Certificate
+      name="Digital Marketing"
+      issuer="HubSpot Academy"
+      link="https://app.hubspot.com/academy/achievements/ndrfv7dj/en/1/jonathan-falcon/inbound-marketing"
+      year="2023"
+    />    
+    <Certificate
+      name="Inbound Marketing"
+      issuer="HubSpot Academy"
+      link="https://app.hubspot.com/academy/achievements/j4h7lgvw/en/1/jonathan-falcon/digital-marketing"
+      year="2023"
+    />
+    <Certificate
+      name="Introduction to Stata 15"
+      issuer="LinkedIn"
+      link="https://www.linkedin.com/learning/certificates/436fa84b6cd23f585d94aa70a3145df09c922ddb99bab3e984ecd5b9f5e1d899?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B0CbUnInpQIuMyB6eR%2Fo4CA%3D%3D"
+      year="2022"
+    />    
+  </div>
+
+  <div class="mb-4">
+    <h2 class="md:text-4xl text-3xl uppercase tracking-wider w-full font-bold flex flex-row items-center">Coding Languages <Icon name="ph:file-code-fill" class="md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] ml-5" /></h2>
+  </div>
+
+    <div class="md:mb-20 mb-14 grid gap-y-4">
+      <Skill
+        skill="R"
+        icon="r-lang"
+        level=3
+        />
+      <Skill
+        skill="Python"
+        icon="python"
+        level=2
+      />
+      <Skill
+        skill="SQL"
+        icon="snowflake, mysql, sqlite"
+        level=2
+      />
+      <Skill
+        skill="STATA"
+        icon="file-type-stata"
+        pack="vscode-icons"
+        level=2
+      />
+      <Skill
+        skill="SAS"
+        icon="file-type-sas"
+        pack="vscode-icons"
+        level=1
+      />
+      <Skill
+        skill="MATLAB"
+        icon="file-type-matlab"
+        pack="vscode-icons"
+        level=1
+      />
+      <Skill
+        skill="HTML"
+        icon="html-5"
+        level=3
+      />
+      <Skill
+        skill="CSS"
+        icon="css-3"
+        level=3
+      />
+    </div>
+
+    <div class="mb-4">
+      <h2 class="md:text-4xl text-3xl uppercase tracking-wider w-full font-bold flex flex-row items-center">Software <Icon name="mdi:desktop-mac-dashboard" class="md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] ml-5" /></h2>
+    </div>
+
+    <div class="md:mb-20 mb-14 grid gap-y-4">
+      <Skill
+        skill="Tableau"
+        icon="tableau"
+        level=2
+      />
+      <Skill
+        skill="Qualtrics"
+        icon="qualtrics"
+        pack="simple-icons"
+        level=2
+      />
+      <Skill
+        skill="Microsoft Office Suite"
+        icon="file-type-word, file-type-excel, file-type-powerpoint"
+        pack="vscode-icons"
+        level=4
+      />
+      <Skill
+        skill="Adobe Photoshop"
+        icon="file-type-photoshop"
+        pack="vscode-icons"
+        level=3
+      />
+      <Skill
+        skill="Affinity Designer"
+        icon="file-type-affinitydesigner"
+        pack="vscode-icons"
+        level=2
+      />
+      <Skill
+        skill="Affinity Publisher"
+        icon="file-type-affinitypublisher"
+        pack="vscode-icons"
+        level=1
+      />
+    </div>
+
+    <div class="mb-4">
+      <h2 class="md:text-4xl text-3xl uppercase tracking-wider w-full font-bold flex flex-row items-center">
+        Hobbies <Icon name="mdi:house" class="md:w-9 md:h-9 w-[1.875rem] h-[1.875rem] ml-5" /></h2>
+    </div>
+
+    <div class="md:mb-20 mb-14 grid gap-y-4">
+      <Hobby
+        hobby="Fencing"
+        icon="fencing"
+        pack="mdi"
+      />
+      <Hobby
+        hobby="Photography"
+        icon="camera"
+        pack="mdi"
+      />
+      <Hobby
+        hobby="Writing Music"
+        icon="music-notes-fill"
+        pack="ph"
+      />
+    </div>
+    
+    </section>
+</Layout>

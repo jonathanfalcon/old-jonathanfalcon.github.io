@@ -1,0 +1,58 @@
+---
+import { SITE } from '~/config.mjs';
+import Layout from '~/layouts/PageLayout.astro';
+import TimeLineElement from "../components/cv/TimelineWork.astro";
+import { Icon } from 'astro-icon';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import LatestPosts from '~/components/blog/LatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Contact from "../components/widgets/Contact.astro";
+
+const meta = {
+  title: 'Contact',
+  description: SITE.description,
+};
+
+---
+
+
+<Layout {meta}>
+  <Contact>
+    <Fragment slot="title">
+      Send a message <br />
+      <span class="text-spring-green-500 dark:text-spring-green-400"> or see my profiles</span>
+    </Fragment>
+    
+  </Contact>
+</Layout>
+<script isInline>
+  window.addEventListener("load", function() {
+    const form = document.forms['contact'];
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const action = e.target.action;
+
+      // Show loading message
+      document.getElementById("form").classList.add("opacity-0", "pointer-events-none");
+      document.getElementById("loading-msg").classList.remove("opacity-0", "pointer-events-none");
+
+      fetch(action, {
+        method: 'POST',
+        body: data,
+        })
+        .then(() => {
+        document.getElementById("loading-msg").classList.add("opacity-0", "pointer-events-none");
+        document.getElementById("completion-msg").classList.remove("opacity-0", "pointer-events-none");
+        })
+      });
+    });
+</script>

@@ -1,0 +1,21 @@
+---
+const { title, subtitle, startYear, endYear, desc, tech=null, skills=null, last=false } = Astro.props;
+---
+
+<div class="flex items-stretch">
+  <div class="education__time">
+    <span class="w-5 h-5 md:w-7 md:h-7 bg-nugget-500 dark:bg-nugget-400 block rounded-full mt-0.5 -mb-px"></span>
+    <span class={`education__line bg-nugget-500 dark:bg-nugget-400 block ${last ? "h-[96%]" : "h-[calc(100%+2px)]"} w-1 md:w-2 mx-auto`}></span>
+  </div>
+  <div class="experience__data bd-grid ml-3 md:ml-5 w-full mb-5 mr-auto">
+    <h3 class="font-bold md:text-2xl text-xl leading-none mb-1 basis-4/5 ">{title}</h3>
+    <h4 class="md:text-xl text-lg leading-none mb-5">{subtitle}</h4>
+    <p class="mb-4 -mr-[50.81px] md:-mr-[60.97px] md:text-xl leading-normal text-lg">{desc}</p>
+    {tech === null ? "" : <h5 class="-mr-[50.81px] md:-mr-[60.97px] md:text-xl font-bold text-lg">Technologies</h5> <p class="-mr-[50.81px] md:-mr-[60.97px] md:text-xl leading-normal text-lg">{tech}</p>}
+    {skills === null ? "" : <h5 class="mt-4 -mr-[50.81px] md:-mr-[60.97px] md:text-xl font-bold text-lg">Skills</h5> <p class="-mr-[50.81px] md:-mr-[60.97px] md:text-xl leading-normal text-lg">{skills}</p>}
+  </div>
+  <div class="year mb-1 tabular-nums md:text-2xl text-xl font-bold">
+    <div class="leading-none">{endYear}</div>
+    <div class="leading-none">{startYear}</div>
+  </div>
+</div>

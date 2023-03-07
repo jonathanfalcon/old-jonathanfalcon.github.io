@@ -1,0 +1,84 @@
+---
+import { SITE } from '~/config.mjs';
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero3 from '~/components/widgets/Hero3.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import LatestPosts from '~/components/blog/LatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const meta = {
+  title: SITE.title,
+  description: SITE.description,
+  dontUseTitleTemplate: true,
+};
+---
+
+<Layout {meta}>
+
+  <Hero3
+    callToAction={{ text: "Let's Chat", href: '/contact', icon: 'ph:chats-circle-bold' }}
+    callToAction2={{ text: 'About Me', href: '/resume', icon: 'ph:arrow-right-bold'}}
+    image={{ src: import('../assets/images/profile.jpg'), alt: 'Jonathan Falcon smiling and not looking directly at camera. Backdrop is of Texas State University' }}
+  >
+    <Fragment slot="title">
+      Hi, I'm <br />
+      <span class="text-nugget-500 dark:text-nugget-400"> Jonathan Falcon</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="block mb-1">As a marketing analyst, I leverage my multidisciplinary background to give you the most holistic understanding of your customers.</span>
+    </Fragment>
+  </Hero3>
+  
+  <Features
+    title="Why me?"
+    subtitle="You need someone who's flexible enough to run the analyses and also effectively communicate the results."
+    items={[
+      [
+        {
+          title: 'Quant + Qual',
+          description:
+            'A unique blend of quantitative and qualitative skills allow a holistic and defensible understanding of the problem.',
+          icon: 'ph:magnifying-glass-bold',
+        },
+        {
+          title: 'Resourceful',
+          description:
+            'No data? No problem. I strive to make the fullest use of resources at hand, so I can always accomplish my goal.',
+          icon: 'mdi:lightbulb-on',
+        }],
+        [{
+          title: 'Curious',
+          description:
+            'Ever wonder how something works? Knowing how something works is sometimes just as important, and that\'s just exactly drives me.',
+          icon: 'ph:brain-bold',
+        },
+        {
+          title: 'Multidisciplinary',
+          description:
+            'A unique blend of economics, finance, and marketing create a unique yet harmonic perspective and method of problem-solving.',
+          icon: 'ph:stack-fill',
+        },
+      ],
+    ]}
+  />
+
+  <div class="bg-white dark:bg-slate-900">
+  <LatestPosts
+    title="Here's some of my most recent projects and posts"
+    postIds={[
+      'useful-resources-to-create-websites.md',
+      'astrowind-template-in-depth.md',
+    ]}
+  />
+    </div>
+  
+  
+</Layout>
