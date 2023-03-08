@@ -35,7 +35,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl mx-auto lg:text-7xl md:text-6xl font-bold mb-12 font-serif dark:text-gray-200"
+              class=" mx-auto lg:text-7xl md:text-6xl text-5xl font-bold lg:mb-16 md:mb-12 mb-6 font-serif dark:text-gray-200"
               set:html={title}
             />
           )
@@ -43,17 +43,17 @@ const {
         <ul class="flex justify-center lg:gap-20 md:gap-12 gap-8 md:mb-12 mb-6">
           <li>
             <a class="text-muted hover:text-spring-green-500 dark:hover:text-spring-green-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="LinkedIn" href="https://www.linkedin.com/in/jqfalcon/">
-              <Icon class="md:w-20 md:h-20 w-12 h-12" name="simple-icons:linkedin"/>
+              <Icon class="lg:w-20 lg:h-20 md:w-16 md:h-16 w-12 h-12" name="simple-icons:linkedin"/>
 
             </a>
           </li><li>
           <a class="text-muted hover:text-spring-green-500 dark:hover:text-spring-green-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="GitHub" href="https://github.com/jonathanfalcon">
-            <Icon class="md:w-20 md:h-20 w-12 h-12" name="simple-icons:github"/>
+            <Icon class="lg:w-20 lg:h-20 md:w-16 md:h-16 w-12 h-12" name="simple-icons:github"/>
 
           </a>
         </li><li>
           <a class="text-muted hover:text-spring-green-500 dark:hover:text-spring-green-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="Unsplash" href="https://unsplash.com/@jonathanfalcon">
-            <Icon class="md:w-20 md:h-20 w-12 h-12" name="simple-icons:unsplash"/>
+            <Icon class="lg:w-20 lg:h-20 md:w-16 md:h-16 w-12 h-12" name="simple-icons:unsplash"/>
 
           </a>
         </li>
@@ -103,7 +103,7 @@ const {
         </div>
         {content && <Fragment set:html={content} />}
       </div>
-      <div class="relative basis-1/2 w-full h-fit md:p-10 px-6 py-4 lg:rounded-[1.5rem] rounded-2xl bg-gray-200 dark:bg-rich-black shadow-2xl shadow-slate-600/20 border-gray-200 dark:border-slate-700 border-2">
+      <div class="relative basis-1/2 w-full h-fit md:p-10 px-6 py-4 lg:rounded-[1.5rem] rounded-2xl bg-gray-200 dark:bg-rich-black shadow-2xl shadow-slate-600/20 border-gray-300 dark:border-slate-700 border-2">
         <form name="contact" id="form" action="https://script.google.com/macros/s/AKfycbxueXZ-idc-kiZW_otSSjk5m3DSYWATDFFEs-GzZorH7qcqDBgMv0PSvKrLsloVdUY-/exec" class="space-y-8 transition duration-300">
           <div class="flex flex-wrap -mx-3">
               <div class="w-full md:w-1/2 px-3">
