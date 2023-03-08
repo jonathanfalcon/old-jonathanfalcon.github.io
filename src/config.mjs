@@ -5,7 +5,7 @@ const CONFIG = {
 
   origin: 'https://jonathanfalcon.com',
   basePathname: '/',
-  trailingSlash: false,
+  trailingSlash: true,
 
   title: 'Jonathan Falcon',
   description:
