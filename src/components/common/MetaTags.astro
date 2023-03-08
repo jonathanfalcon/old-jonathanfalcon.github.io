@@ -95,8 +95,8 @@ const currentPath = pathname.slice(1); // remove the first "/"
 
 {SITE.splitbeeAnalytics?.enabled && <SplitbeeAnalytics {...SITE.splitbeeAnalytics} />}
 
-<link rel="shortcut icon" href={getAsset('/favicon.ico')} />
 <link rel="icon" type="image/svg+xml" href={getAsset('/favicon.svg')} />
 <link rel="mask-icon" href={getAsset('/favicon.svg')} color="#2C6E49" />
+<link rel="shortcut icon" sizes="16x16" href={getAsset('/favicon.ico')} />
 
 {currentPath === 'contact' ? <base target="_top"> : ''}
