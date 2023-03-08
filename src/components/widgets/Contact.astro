@@ -26,11 +26,11 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px] dark:bg-resume-dark bg-resume">
+<section class="relative md:-mt-[60px] dark:bg-resume-dark bg-resume">
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-    <div class="pt-0 md:pt-[50px] pointer-events-none"></div>
-    <div class="py-8 md:py-20 lg:py-0 lg:flex lg:items-center lg:min-h-screen lg:gap-8">
+  <div class="relative max-w-[88rem] mx-auto px-4 sm:px-10 md:px-20">
+    <div class="pt-0 lg:pt-0 md:pt-[50px] pointer-events-none"></div>
+    <div class="py-8 md:py-16 lg:py-0 lg:flex lg:items-center lg:min-h-screen xl:gap-20 lg:gap-10">
       <div class="basis-1/2 mx-auto">
         {
           title && (
@@ -40,7 +40,7 @@ const {
             />
           )
         }
-        <ul class="flex justify-center gap-10 mb-8">
+        <ul class="flex justify-center lg:gap-20 md:gap-12 gap-8 md:mb-12 mb-6">
           <li>
             <a class="text-muted hover:text-spring-green-500 dark:hover:text-spring-green-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="LinkedIn" href="https://www.linkedin.com/in/jqfalcon/">
               <Icon class="md:w-20 md:h-20 w-12 h-12" name="simple-icons:linkedin"/>
