@@ -7,28 +7,30 @@ export interface Props {
   nextUrl: string;
   prevText?: string;
   nextText?: string;
+  pageNum?: string;
 }
 
-const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } = Astro.props;
+const { prevUrl, nextUrl, prevText = 'Previous', nextText = 'Next', pageNum } = Astro.props;
 ---
 
 {
   (prevUrl || nextUrl) && (
-    <div class="container flex">
       <div class="flex flex-row mx-auto container justify-between">
-        <a href={getPermalink(prevUrl)} class={`btn btn-ghost md:px-3 px-3 mr-2 ${!prevUrl ? 'invisible' : ''}`}>
-          <div class="flex flex-row align-middle">
-            <Icon name="tabler:chevron-left" class="w-6 h-6" />
+        <a href={getPermalink(prevUrl)} class={`btn md:px-6 px-3 ${!prevUrl ? 'invisible' : ''}`}>
+          <div class="flex flex-row align-middle items-center">
+            <Icon name="ph:arrow-left-bold" class="w-6 h-6" />
             <p class="ml-2">{prevText}</p>
           </div>
         </a>
-        <a href={getPermalink(nextUrl)} class={`btn btn-ghost md:px-3 px-3 ${!nextUrl ? 'invisible' : ''}`}>
-          <div class="flex flex-row align-middle">
+        <div class="infline-flex justify-center items-center my-3.5">
+          <p class="ml-2">{pageNum === 1 ? '' : pageNum}</p>
+        </div>
+        <a href={getPermalink(nextUrl)} class={`btn md:px-6 px-3 ${!nextUrl ? 'invisible' : ''}`}>
+          <div class="flex flex-row align-middle items-center">
             <span class="mr-2">{nextText}</span>
-            <Icon name="tabler:chevron-right" class="w-6 h-6" />
+            <Icon name="ph:arrow-right-bold" class="w-6 h-6" />
           </div>
         </a>
       </div>
-    </div>
   )
 }
