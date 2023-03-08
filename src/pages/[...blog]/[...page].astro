@@ -37,6 +37,6 @@ const meta = {
       My Work
     </Headline>
     <BlogList posts={page.data} />
-    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} pageNum={currentPage}/>
   </section>
 </Layout>
