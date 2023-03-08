@@ -12,11 +12,11 @@ export const headerData = {
     },
     {
       text: 'Resume',
-      href: '/resume',
+      href: '/resume/',
     },
     {
       text: 'Contact',
-      href: '/contact',
+      href: '/contact/',
     }
   ],
   actions: [
@@ -38,12 +38,12 @@ export const footerData = {
     },
     {
       links: [
-        { text: 'Resume', href: '/resume' }
+        { text: 'Resume', href: '/resume/' }
       ],
     },
     {
       links: [
-        { text: 'Get in Touch', href: '/contact' }
+        { text: 'Get in Touch', href: '/contact/' }
       ],
     },
   ],
