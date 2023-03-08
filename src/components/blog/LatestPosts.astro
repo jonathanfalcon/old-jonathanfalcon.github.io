@@ -37,7 +37,7 @@ const posts = await findLatestPosts({ count });
       {
         allPostsText && allPostsLink && (
           <a
-            class="text-muted dark:text-slate-300 dark:hover:text-spring-green-300 hover:text-spring-green-400 transition duration-200 block mb-6 lg:mb-0"
+            class="text-muted dark:text-slate-300 dark:hover:text-spring-green-300 hover:text-spring-green-400 transition duration-200 mb-6 lg:mb-0 text-lg"
             href={allPostsLink}
           >
             {allPostsText} »
@@ -46,7 +46,7 @@ const posts = await findLatestPosts({ count });
       }
     </div>
 
-    {information && <p class="text-gray-800 dark:text-slate-200 lg:text-sm lg:max-w-md" set:html={information} />}
+    {information && <p class="text-gray-800 dark:text-slate-200 lg:max-w-md" set:html={information} />}
   </div>
 
   <Grid posts={posts} />
