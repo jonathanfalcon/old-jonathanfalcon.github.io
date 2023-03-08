@@ -64,7 +64,7 @@ const {
           )
         }
         <div class="mx-auto lg:max-w-none">
-          {subtitle && <p class="text-xl md:text-2xl text-gray-800 mb-6 dark:text-slate-200" set:html={subtitle} />}
+          {subtitle && <p class="text-gray-800 mb-6 dark:text-slate-200 xl:leading-9 text-xl md:text-2xl xl:text-2.5xl" set:html={subtitle} />}
           <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl">
             {
               callToAction && (
@@ -72,14 +72,14 @@ const {
                   {typeof callToAction === 'string' ? (
                     <Fragment set:html={callToAction} />
                   ) : (
-                    <a class="btn btn-primary" href={callToAction?.href} rel="noopener">
+                    <a class="btn btn-primary md:text-2xl" href={callToAction?.href} rel="noopener">
                       {callToAction?.icon && (
                         <>
                           {''}
                         </>
                       )}
                       {callToAction?.text}
-                      <Icon name={callToAction.icon} class="w-5 h-5 ml-1.5 -mr-1" />
+                      <Icon name={callToAction.icon} class="w-7 h-5 ml-1.5 -mr-1" />
                     </a>
                   )}
                 </div>
@@ -91,7 +91,7 @@ const {
                   {typeof callToAction2 === 'string' ? (
                     <Fragment set:html={callToAction2} />
                   ) : (
-                    <a class="btn " href={callToAction2?.href}>
+                    <a class="btn md:text-2xl" href={callToAction2?.href}>
                       {callToAction2?.icon && (
                         <>
                           {''}
