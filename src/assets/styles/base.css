@@ -46,7 +46,7 @@
 }
 
 #header {
-  @apply bg-white/80 backdrop-blur-2xl backdrop-saturate-200 dark:bg-rich-black/90;
+  @apply bg-white/80 backdrop-blur-2xl backdrop-saturate-200 dark:bg-rich-black/80;
 }
 
 li.dropdown > button, li.not-dropdown {
