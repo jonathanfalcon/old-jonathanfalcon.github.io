@@ -13,8 +13,8 @@
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
   },
   "devDependencies": {
-    "@astrojs/image": "^0.14.1",
-    "@astrojs/mdx": "^0.16.0",
+    "@astrojs/image": "^0.16.0",
+    "@astrojs/mdx": "^0.18.0",
     "@astrojs/partytown": "^1.0.3",
     "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.1",
@@ -49,10 +49,12 @@
   "dependencies": {
     "@fontsource/fira-code": "^4.5.13",
     "@fontsource/plus-jakarta-sans": "^4.5.11",
+    "astro-auto-import": "^0.2.1",
     "chart.js": "^4.2.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-katex": "^6.0.2",
     "rehype-mathjax": "^4.0.2",
+    "rehype-shift-heading": "^1.0.2",
     "rehype-slug": "^5.1.0",
     "rehype-toc": "^3.0.2",
     "remark-math": "^5.1.1",
