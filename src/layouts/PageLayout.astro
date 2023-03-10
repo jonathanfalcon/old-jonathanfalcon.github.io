@@ -17,9 +17,9 @@ const { meta } = Astro.props;
 
 <Layout {meta}>
   <slot name="header">
-    <Header {...headerData} isSticky position="right" showToggleTheme />
+    <Header {...headerData} position="right" showToggleTheme />
   </slot>
-  <main>
+  <main class="mt-[60px]">
     <slot />
   </main>
   <slot name="footer">

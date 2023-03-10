@@ -42,12 +42,12 @@ const {
 
 <header
   class:list={[
-    { sticky: isSticky, relative: !isSticky },
-    'top-0 z-40 flex-none mx-auto w-full transition-all duration-100',
+    { sticky: isSticky, fixed: !isSticky },
+    'top-0 z-40 flex-none mx-auto w-full',
   ]}
   id="header"
 >
-  <div class="py-2 px-3 md:px-4 mx-auto w-full md:flex md:justify-between max-w-7xl">
+  <div class="py-2 px-3 md:px-4 mx-auto w-full md:flex md:justify-between max-w-7xl touch-manipulation">
     <div class:list={[{"mr-auto": position === "right"}, "flex justify-between"]}>
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
@@ -58,7 +58,7 @@ const {
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex dark:text-slate-200 h-[calc(100vh-72px)] md:h-auto overflow-y-auto md:overflow-visible md:mx-5"
+      class="items-center w-full md:w-auto opacity-0 md:opacity-100 h-0 transition-all duration-500 md:flex dark:text-slate-200 md:h-auto overflow-y-auto md:overflow-visible md:mx-5"
       aria-label="Main navigation"
     >
       <ul class="flex flex-col md:flex-row md:self-center w-full md:w-auto md:text-1.5xl text-6xl md:mt-0 mt-2">
