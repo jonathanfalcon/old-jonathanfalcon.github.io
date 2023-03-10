@@ -9,9 +9,11 @@ import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
+
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeShiftHeading from 'rehype-shift-heading'
 
 
 import { SITE } from './src/config.mjs';
@@ -31,7 +33,7 @@ export default defineConfig({
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin, remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex, [rehypeShiftHeading, {shift: 1}]],
   },
 
   integrations: [
