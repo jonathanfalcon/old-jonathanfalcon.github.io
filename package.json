@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "A template to make your website using Astro + Tailwind CSS.",
+  "name": "jonathanfalcon.github.io",
+  "description": "A personal site based on the AstroWind template",
   "version": "0.9.8",
   "scripts": {
     "dev": "astro dev",
@@ -21,7 +21,6 @@
     "@astrojs/tailwind": "^3.0.1",
     "@astrolib/analytics": "^0.3.0",
     "@astrolib/seo": "^0.3.0",
-    "@fontsource/inter": "^4.5.15",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
@@ -47,17 +46,9 @@
     "node": ">=16.12.0"
   },
   "dependencies": {
-    "@fontsource/fira-code": "^4.5.13",
-    "@fontsource/plus-jakarta-sans": "^4.5.11",
-    "astro-auto-import": "^0.2.1",
     "chart.js": "^4.2.1",
-    "rehype-autolink-headings": "^6.1.1",
     "rehype-katex": "^6.0.2",
-    "rehype-mathjax": "^4.0.2",
     "rehype-shift-heading": "^1.0.2",
-    "rehype-slug": "^5.1.0",
-    "rehype-toc": "^3.0.2",
-    "remark-math": "^5.1.1",
-    "remark-toc": "^8.0.1"
+    "remark-math": "^5.1.1"
   }
 }
