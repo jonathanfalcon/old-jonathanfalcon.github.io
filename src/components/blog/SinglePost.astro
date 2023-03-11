@@ -81,7 +81,7 @@ const { post, url } = Astro.props;
       }
     </header>
     <div
-      class="mx-auto px-4 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert prose-md prose-headings:font-bold prose-a:duration-200 prose-a:transition prose-a:text-blue-600 hover:prose-a:text-blue-900 dark:hover:prose-a:text-blue-500 dark:prose-a:text-blue-300 prose-img:rounded-2xl prose-img:shadow-lg mt-8 prose-table:table-fixed prose-headings:mb-2.5 prose-h5:mb-0.5 prose-h6:mb-0.5 prose-p:mt-0 prose-h2:uppercase prose-h2:tracking-wide dark:text-inherit text-inherit prose-li:marker:text-inherit dark:prose-li:marker:text-inherit md:prose-h2:text-4xl md:prose-h3:text-3xl md:prose-h4:text-2xl md:prose-h5:text-1.5xl md:prose-h6:text-1.5xl prose-h2:text-2.5xl prose-h3:text-2xl prose-h4:text-1.5xl prose-h5:text-xl prose-h6:text-xl prose-headings:scroll-mt-20"
+      class="mx-auto px-4 sm:px-6 max-w-3xl max-md:prose-p:text-[1.075rem] max-md:prose-li:text-[1.075rem] prose lg:prose-xl md:prose-lg dark:prose-invert prose-headings:font-bold prose-a:duration-200 prose-a:transition prose-a:text-blue-600 hover:prose-a:text-blue-900 dark:hover:prose-a:text-blue-500 dark:prose-a:text-blue-300 prose-img:rounded-2xl prose-img:shadow-lg mt-8 prose-table:table-fixed prose-headings:!mb-2.5 prose-h5:!mb-0.5 prose-h6:!mb-0.5 prose-p:mt-0 prose-h2:uppercase prose-h2:tracking-wide dark:text-inherit text-inherit prose-li:marker:text-inherit dark:prose-li:marker:text-inherit md:prose-h2:!text-4xl md:prose-h3:!text-3xl md:prose-h4:!text-2xl md:prose-h5:!text-1.5xl md:prose-h6:!text-1.5xl prose-h2:!text-2.5xl prose-h3:!text-2xl prose-h4:!text-1.5xl prose-h5:!text-xl prose-h6:!text-xl"
     >
       {
         post.Content ? (
@@ -96,7 +96,7 @@ const { post, url } = Astro.props;
     </div>
     <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
       <PostTags tags={post.tags} class="mr-5" />
-      <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
+      <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-400" />
     </div>
   </article>
 </section>
