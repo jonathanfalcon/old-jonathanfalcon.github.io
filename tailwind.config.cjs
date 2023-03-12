@@ -5,6 +5,9 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      minHeight: {
+        'small-screen-minus-nav': ['calc(100vh - 60px) /* fallback */', 'calc(100svh - 60px)'],
+      },
       screens: {
         'xs': '350px',
         ...defaultTheme.screens,
