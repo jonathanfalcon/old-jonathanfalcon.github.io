@@ -26,11 +26,9 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[60px] dark:bg-resume-dark bg-resume">
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+<section class="relative dark:bg-resume-dark bg-resume lg:items-center lg:grid lg:min-h-[calc(100vh-60px)]">
   <div class="relative max-w-[88rem] mx-auto px-4 sm:px-6">
-    <div class="pt-0 lg:pt-0 md:pt-[50px] pointer-events-none"></div>
-    <div class="py-8 md:py-16 lg:py-0 lg:flex lg:flex-row-reverse lg:items-center lg:min-h-screen lg:gap-8">
+    <div class="lg:flex lg:flex-row-reverse lg:items-center lg:gap-8 py-8">
       <div class="basis-2/5">
         {
           image && (
