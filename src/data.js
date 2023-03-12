@@ -43,7 +43,7 @@ export const footerData = {
     },
     {
       links: [
-        { text: 'Get in Touch', href: '/contact/' }
+        { text: 'Contact', href: '/contact/' }
       ],
     },
   ],
