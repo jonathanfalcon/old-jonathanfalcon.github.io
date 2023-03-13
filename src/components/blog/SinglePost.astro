@@ -61,8 +61,8 @@ const { post, url } = Astro.props;
           <Picture
             src={post.image}
             class="max-w-full lg:max-w-6xl mx-auto md:mb-14 mb-6 min-[910px]:rounded-3xl bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900, 1400, 2000]}
-            sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, (max-width: 2000px) 1400px, 2000px"
+            widths={[400, 900, 1400, 2000, 3000]}
+            sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, (max-width: 2000px) 1400px, (max-width: 3000px) 2000px, 3000px"
             alt={post.title}
             loading="eager"
             aspectRatio={16 / 9}
