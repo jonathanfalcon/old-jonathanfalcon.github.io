@@ -16,8 +16,39 @@ export interface Props {
 }
 
 const { post, url } = Astro.props;
----
 
+//Prose styles
+let baseStyleFix = 'max-md:prose-p:text-[1.075rem] max-md:prose-li:text-[1.075rem]';
+let baseStyle = `'mt-8 mx-auto px-4 sm:px-6 max-w-4xl prose lg:prose-xl md:prose-lg dark:prose-invert ${baseStyleFix}'`;
+
+let baseTableStyle = 'prose-table:min-w-[30rem] prose-table:table-auto md:prose-table:text-lg prose-table:text-base prose-table:my-0';
+let tableHeadStyle = 'prose-thead:bg-spring-green-500 prose-th:text-white prose-thead:border-none';
+let tableRowStyle = 'even:prose-tr:bg-gray-200 dark:even:prose-tr:bg-slate-700';
+let tableDataStyle = 'prose-td:px-4 prose-th:px-4 prose-td:align-middle prose-th:align-middle prose-th:py-3 prose-td:py-3';
+let tableStyle = `${baseTableStyle} ${tableHeadStyle} ${tableRowStyle} ${tableDataStyle}`;
+
+let baseHeadingStyle = 'prose-headings:font-bold prose-headings:!mb-2.5';
+let h2Style = 'md:prose-h2:!text-4.5xl prose-h2:!text-3xl prose-h2:uppercase prose-h2:tracking-wide';
+let h3Style = 'md:prose-h3:!text-3xl prose-h3:!text-2xl';
+let h4Style = 'md:prose-h4:!text-2xl prose-h4:!text-1.5xl';
+let h5Style = 'md:prose-h5:!text-1.5xl prose-h5:!text-xl prose-h5:!mb-0.5';
+let h6Style = 'md:prose-h6:!text-1.5xl prose-h6:!text-xl prose-h6:!mb-0.5';
+let headingStyle = `${baseHeadingStyle} ${h2Style} ${h3Style} ${h4Style} ${h5Style} ${h6Style}`;
+
+let paragraphStyle = 'prose-p:mt-0';
+
+let textColor = 'text-inherit dark:text-inherit prose-li:marker:text-inherit dark:prose-li:marker:text-inherit';
+
+let linkStyle = 'prose-a:duration-200 prose-a:transition prose-a:text-blue-600 hover:prose-a:text-blue-900 dark:hover:prose-a:text-blue-500 dark:prose-a:text-blue-300';
+
+let imageStyle = 'prose-img:rounded-2xl prose-img:shadow-lg';
+
+let preStyle = '#prose-pre:!bg-gray-100';
+
+let codeStyle = 'prose-code:before:hidden prose-code:after:hidden ';
+
+let proseStyle = `${baseStyle} ${tableStyle} ${headingStyle} ${paragraphStyle} ${textColor} ${linkStyle} ${imageStyle} ${preStyle} ${codeStyle}`;
+---
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
       integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +58,7 @@ const { post, url } = Astro.props;
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
   <article>
     <header class={post.image ? '' : ''}>
-      <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
+      <div class="flex justify-between flex-col sm:flex-row max-w-4xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p class="text-gray-700 dark:text-gray-300">
           <Icon name="mdi:calendar-month" class="w-4 h-4 inline-block -mt-0.5" />
           <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
@@ -46,12 +77,12 @@ const { post, url } = Astro.props;
         </p>
       </div>
       <h1
-        class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold font-serif"
+        class="px-4 sm:px-6 max-w-4xl mx-auto text-4xl md:text-6xl font-bold font-serif"
       >
         {post.title}
       </h1>
       <p
-        class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl leading-snug md:text-2xl text-gray-800 dark:text-slate-300"
+        class="max-w-4xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl leading-snug md:text-2xl text-gray-800 dark:text-slate-300"
       >
         {post.description}
       </p>
@@ -81,7 +112,7 @@ const { post, url } = Astro.props;
       }
     </header>
     <div
-      class="mx-auto px-4 sm:px-6 max-w-3xl max-md:prose-p:text-[1.075rem] max-md:prose-li:text-[1.075rem] prose lg:prose-xl md:prose-lg dark:prose-invert prose-headings:font-bold prose-a:duration-200 prose-a:transition prose-a:text-blue-600 hover:prose-a:text-blue-900 dark:hover:prose-a:text-blue-500 dark:prose-a:text-blue-300 prose-img:rounded-2xl prose-img:shadow-lg mt-8 prose-table:table-fixed prose-headings:!mb-2.5 prose-h5:!mb-0.5 prose-h6:!mb-0.5 prose-p:mt-0 prose-h2:uppercase prose-h2:tracking-wide dark:text-inherit text-inherit prose-li:marker:text-inherit dark:prose-li:marker:text-inherit md:prose-h2:!text-4xl md:prose-h3:!text-3xl md:prose-h4:!text-2xl md:prose-h5:!text-1.5xl md:prose-h6:!text-1.5xl prose-h2:!text-2.5xl prose-h3:!text-2xl prose-h4:!text-1.5xl prose-h5:!text-xl prose-h6:!text-xl"
+      class={proseStyle}
     >
       {
         post.Content ? (
@@ -94,7 +125,7 @@ const { post, url } = Astro.props;
         )
       }
     </div>
-    <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
+    <div class="mx-auto px-6 sm:px-6 max-w-4xl mt-8 flex justify-between flex-col sm:flex-row">
       <PostTags tags={post.tags} class="mr-5" />
       <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-400" />
     </div>
