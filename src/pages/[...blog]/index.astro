@@ -8,6 +8,7 @@ import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { fetchPosts } from '~/utils/blog';
 import { findImage } from '~/utils/images';
+import LatestPosts from "../../components/blog/LatestPosts.astro";
 
 export async function getStaticPaths() {
   if (BLOG?.disabled || BLOG?.post?.disabled) return [];
@@ -35,4 +36,7 @@ const meta = {
 <Layout {meta}>
   <SinglePost post={{ ...post, image: meta.image }} url={url} />
   <ToBlogLink />
+  <div class="bg-gray-100 dark:bg-slate-800">
+    <LatestPosts title="More of my work" allPostsText=""/>
+  </div>
 </Layout>
