@@ -13,30 +13,28 @@ export interface Props {
 
 const { post } = Astro.props;
 const image = await findImage(post.image);
+
+const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
 ---
 
 <article class="mb-6 transition">
-  <div class="relative bg-gray-400 dark:bg-slate-700 rounded-3xl shadow-lg mb-6">
-    <a
-      href={getPermalink(post.permalink, 'post')}
-    >
-    {
-      image && (
-        <Picture
-          src={image}
-          class="hover:scale-[1.05] active:scale-[1] transition duration-300 w-full h-full rounded-3xl shadow-lg bg-gray-400 dark:bg-slate-700"
-          widths={[400, 900, 1200]}
-          sizes="(max-width: 900px) 400px, (max-width: 1200px) 900px, 1200px"
-          alt={post.title}
-          aspectRatio="16:9"
-          format="webp"
-          loading="lazy"
-          decoding="async"
-        />
-      )
-    }
+    <a href={getPermalink(post.permalink, 'post')}>
+      <div class="relative pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded-3xl shadow-xl hover:scale-[1.05] active:scale-[1] transition duration-300 mb-5">
+        {image && (
+          <Picture
+            src={image}
+            class="absolute inset-0 object-contain w-full h-full rounded bg-gray-400 dark:bg-slate-700"
+            widths={[400, 900, 1400]}
+            sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, 1400px"
+            alt={post.title}
+            aspectRatio="16:9"
+            format="webp"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
       </a>
-  </div>
   <h3 class="mb-2 text-3xl font-bold sm:text-4xl font-serif">
     {
       BLOG?.post?.disabled ? (
