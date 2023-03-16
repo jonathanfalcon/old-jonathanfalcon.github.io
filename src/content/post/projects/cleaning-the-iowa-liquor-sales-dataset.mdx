@@ -1,0 +1,155 @@
+---
+title: Cleaning the Iowa Liquor Sales Dataset
+publishDate: 2022-11-28
+description: This R coding project aimed to clean the Iowa Liquor Sales dataset. Missing data was imputed using appropriate logic and methods, and categories were condensed by merging similar ones for ease of analysis and meaningful interpretation.
+image: ~/assets/images/posts/cleaning-the-iowa-liquor-sales-dataset/iowa-liquor-sales.jpg
+tags:
+  - McCombs
+  - marketing
+  - R
+---
+
+import { Icon } from 'astro-icon';
+import Table from '~/components/blog/Table.astro';
+
+# Background
+
+This data is taken from the State of Iowa's publicly available data website. It was and still is collected by the Iowa Department of Commerce, Alcoholic Beverages Division, who publishes the data. The page for the dataset can be accessed here: [https://data.iowa.gov/Sales-Distribution/Iowa-Liquor-Sales/m3tr-qhgy.](https://data.iowa.gov/Sales-Distribution/Iowa-Liquor-Sales/m3tr-qhgy) 
+
+
+The data I'll be working with is the following:
+
+<Table>
+| Original Column Name | New Column Name | Description                                                                          |
+|:----------------|:----------------|:-------------------------------------|
+| Date                 | `date`          | Date of order                                                                        |
+| County               | `county`        | County where the store who ordered the liquor is located                             |
+| City                 | `city`          | City where the store who ordered the liquor is located                               |
+| Zip Code             | `zipCode`       | Zip code where the store who ordered the liquor is located                           |
+| Store Number         | `store`         | Unique number assigned to the store who ordered the liquor                           |
+| Vendor Number        | `vendor`        | The vendor number of the company for the brand of liquor ordered                     |
+| Category Name        | `category`      | Category of the liquor ordered                                                       |
+| Item Description     | `item`          | Description of the individual liquor product ordered                                 |
+| Sales (Dollars)      | `sales`         | Total cost of liquor order (number of bottles multiplied by the state bottle retail) |
+| State Bottle Cost    | `bottleCost`    | The amount that Alcoholic Beverages Division paid for each bottle of liquor ordered  |
+| State Bottle Retail  | `bottleRetail`  | The amount the store paid for each bottle of liquor ordered                          |
+</Table>
+
+# Preliminaries
+
+## Loading the Required Libraries
+
+These two libraries are required to better work with the data.
+
+```r
+library(tidyverse)
+library(lubridate)
+```
+
+## Reading in and Sampling the Data
+
+Here, we first create a named vector, consisting of the desired names for our columns and the names of the columns in the dataset.
+
+```r
+selectedVars <- c(date = "Date",
+                  store = "Store Number",
+                  city = "City",
+                  county = "County",
+                  vendor = "Vendor Number",
+                  bottleCost = "State Bottle Cost",
+                  bottleRetail = "State Bottle Retail",
+                  zipCode = "Zip Code",
+                  category = "Category Name",
+                  item = "Item Description",
+                  sales = "Sale (Dollars)")
+```
+
+Next, we read in the dataset using a `readr` function and pass it using a pipe `%>%` to a `dplyr` function to sample a fraction of the dataset, as working with a 6 *gigabyte* file is needlessly time-consuming. This function samples 25% of the available data.
+
+```r
+liquorSales <- read_delim("./Data/Iowa_Liquor_Sales_Sample.tsv",
+                          col_select = all_of(selectedVars),
+                          col_types = cols("Zip Code" = "c",
+                                           "Store Number" = "c",
+                                           "Vendor Number" = "c")) %>%
+  sample_frac(0.25)
+```
+
+# Cleaning the Data
+
+## Converting `date` to Date Format
+
+This step is relatively simple, but extremely important if we are to perform any time-series analyses.
+
+```r
+liquorSales$date <- mdy(liquorSales$date)
+```
+
+## Collapsing the Liquor Categories
+There were too many different categories of liquor for any meaningful analyses, so collapsing the categories into twelve categories makes it easier. The exact item is still preserved though.
+
+This first step creates a named vector like earlier. The name is structured as a regular expression—regex for short.
+
+Breaking it down, `.*` means any character `.` zero or more times `*`. The vertical bar `|` is short for "or" in this case, e.g., `tequila OR mezcal`. All together, this finds matches for broad categories of alcohol.
+
+```r
+patternList <- c(".*vodka.*" = "Vodka",
+                 ".*schnapps.*" = "Schnapps",
+                 ".*rum.*" = "Rum",
+                 ".*tequila|mezcal.*" = "Tequila",
+                 ".*gin.*" = "Gin",
+                 ".*whisk|scotch|bourbon.*" = "Whiskey/Whisky",
+                 ".*brand.*" = "Brandy",
+                 ".*liqueur|cordial|creme|triple|anisette|amaretto.*" = "Liqueur/Cordial",
+                 ".*spirit.*" = "Spirit",
+                 ".*cocktail|rock.*" = "Cocktail",
+                 ".*beer.*" = "Beer",
+                 ".*special|american alcohol|delisted|holiday|iowa.*" = "Misc")
+```
+
+Here, we use a `for` loop to iterate over each broad category of alcohol listed above, searching for and substituting regex matches with the corresponding values. For example, categories that have some form of tequila or mezcal in it will be reassigned "Tequila."
+
+```r
+for (n in 1:length(patternList)) {
+  liquorSales$category <- liquorSales$category %>%
+    gsub(pattern = names(patternList[n]), ignore.case = TRUE, replacement = patternList[[n]])
+}
+```
+
+All together, this section aimed to condense the number of alcohol categories to provide a more reasonable amount to analyze.
+
+
+## Manually Assigning Liquor Categories Based on Item
+
+Now, admittedly, this section used pure brute force. Is there a more elegant and efficient solution? Perhaps, but I couldn't find it in time.
+
+In this first part, we select the `category` and `item` columns from `liquorSales`, keeps observations with missing categories, groups by `item`, and counts the number of observations by that grouping variable `item`. Lastly, it sorts the summary by the `item` count descending.
+
+```r
+liquorSales %>%
+  select(category, item) %>%
+  filter(is.na(category)) %>%
+  group_by(item) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n))
+```
+
+Using the above
+
+```r
+vodka <- "(VODKA|BURNETTS|VAN GOGH|DEEP EDDY|GREY GOOSE|SKYY|PINNACLE|SMIRNOFF|ABSOLUT|SVEDKA|STOLICHNAYA|PEARL|360 |FOREX|BELVEDERE|BURNETT'S|CIROC|KETEL ONE|NEW AMSTERDAM|PRIDE OF THE WAPSI|SOBIESKI|THREE OLIVES|TWENTY GRAND GOLD)"
+schnapps <- "(SCHNAPPS|DEKUYPER)"
+rum <- "(RUM|BACARDI|CAPTAIN MORGAN|ADMIRAL NELSON|BLUE CHAIR|CRUZAN|APPLETON ESTATE RESERVE|SORGHURM|BRUGAL|CALICHE|CALICO|CHICK'S|DEL MAGUEY|DIPLOMATICO|DON Q LIMON|GOSLING'S|KRAKEN|LAWLESS|LEBLO|PALO VIEJO|RON ABUELO|RONDIAZ)"
+tequila <- "(TEQUILA|MEZCAL|REPOSADO|PATRON|EL MAYOR|HORNITOS|AGAVE|PELIGROSO|1800 SILVER|DELEON|CORRALEJO|ANEJO|EXOTICO|LUNAZUL|MONTELOBOS|SAUZA CIEN ANOS BLANCO|TARANTULA)"
+gin <- "(GIN|BOMBAY|TANQUERAY|BEEFEATER|FIFTY POUNDS)"
+whiskey_whisky <- "(WHISKEY|GLENDRONACH|WHISKY|CROWN ROYAL|RYE|BLACK VELVET|MAKER'S MARK|SCOTCH|BOURBON|KNOB CREEK|WOODFORD RESERVE|GLENFIDDICH|SOUTHERN COMFORT|CRAIGELLACHIE|MALT|FIREBALL|JACK DANIEL'S|JACK DANIELS|ARDBEG|ABERLOUR|BIRD DOG|JIM BEAM|GENTLEMAN JACK|HENNESSY|JAMESON|HA |CODY ROAD|WHITE DOG|WILD TURKEY|CORN|GRAIN|OAT|BASTILLE|BENROMACH|BERENTZEN|CANADIAN HUNTER|CHIVAS REGAL|COLD SPELL MINT|CUTTY|DEANSTON|EAGLE RARE|FORTY CREEK|GLEN MORAY|GLENGOYNE|GLENLIVET|GREAT GLEN|JEFFERSON'S RESERVE|KAVALAN|KOVAL|LAPHROAIG|MAKERS MARK|MCCLELLAND'S|MICHTERS|OLD FORESTER|OLD MEDLEY|RED STAG|REVEL STOKE|RICH & RARE APPLE|RUSSELL'S RESERVE|TIM SMITH'S CLIMAX FIRE|TWO CASKS)"
+brandy <- "(BRANDY|E & J|E&J|GRAPPA|PAUL MASSON|COGANC|COGNAC|ARMAGNAC|5 YEAR IRISH SINGLE GRAIN|BARSOL SELECTO ITALIA PISCO|CALVADOS|BUSCA|CHRISTIAN|COURVOISIER|CYNAR|D'USSE|ENCANTO|FIVE STAR PIRATE SWORD|PISCO|REMY MARTIN|TERRY CENTENARIO)"
+liqueur_cordial <- "(LIQUER|LIQUEUR|CORDIAL|CREME|TRIPLE|ANISETTE|99 PINEAPPLE MINI|JAGERMEISTER|LIMONCELLO|CREAM|99|VALENTINO|ROTHMAN & WINTER|DR. MCGILLICUDDY'S|GRAND MARNIER|AMARETTO|DISARONNO|ALIZE|ANNIE'S APPLE PIE|AMARO|AVION ESPRESSO|CHERRY HEERING|COCOYAC|DI AMORE|DOMAINE DE CANTON|FRENCH KISS TROPICAL|GALLIANO|GAMLE ODE|KAHLUA|LICOR|MARASKA|MARIE BRIZARD|NORTH SHORE AQUAVIT|NUX ALPINA|PRAIRIE WOLF DARK|RICURA|THE BITTER TRUTH PIMENTO DRAM|TRAVIS HASSE'S)"
+spirit <- "(SPIRIT|MOONSHINE|OLE SMOKY|EVERCLEAR|MIDNIGHT MOON|ABSINTHE|YENI RAKI|AALBORG|TY KU)"
+cocktail <- "(COCKTAIL|ROCK|TGIFRIDAYS|INDIAN SUMMER|JOSE CUERVO AUTHENTIC LIME MARGARITA POUCH|JOSE CUERVO AUTHENTIC TEAGARITA MARGARITA 4PK CANS|PINA COLADA|SKINNYGIRL)"
+beer <- "(BEER)"
+misc <- "(SPECIAL|AMERICAN ALCOHOL|DESLISTED|HOLIDAY|IOWA|EGG NOG|SANGRIA|BARREL BUFFALO BILL|LA COLLECTION)"
+```
+
+
+
