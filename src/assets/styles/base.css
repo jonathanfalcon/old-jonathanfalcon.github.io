@@ -49,12 +49,6 @@
   @apply bg-white/80 backdrop-blur-2xl backdrop-saturate-200 dark:bg-rich-black/80;
 }
 
-li.dropdown > button, li.not-dropdown {
-  @apply md:font-normal font-bold;
-}
-
-
-
 .dropdown:hover .dropdown-menu {
   display: block;
 }
