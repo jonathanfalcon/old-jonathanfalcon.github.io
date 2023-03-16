@@ -19,6 +19,7 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
 <!DOCTYPE html>
 <html lang={language} dir={textDirection}>
   <head>
+    <BasicScripts />
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
     <link rel="stylesheet" href="https://use.typekit.net/zcp4dkx.css">
     <MetaTags {...meta} />
@@ -27,7 +28,7 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
   <body class="antialiased text-page bg-light dark:text-slate-50 dark:bg-dark">
   
     <slot />
-    <BasicScripts />
+    
     <style is:global>
       img {
         content-visibility: auto;
