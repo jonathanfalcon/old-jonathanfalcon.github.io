@@ -123,6 +123,7 @@ module.exports = {
         'mono': ['Fira Code', ...defaultTheme.fontFamily.mono],
       },
       fontSize: {
+        '4.5xl': ['2.625rem'],
         '2.5xl': ['1.6875rem', {lineHeight: '1.85rem',}],
         '1.5xl': ['1.375rem', {lineHeight: '1.75rem',}]
       },
