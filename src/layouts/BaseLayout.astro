@@ -20,46 +20,7 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
 <html lang={language} dir={textDirection}>
   <head>
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-    <!--<link rel="stylesheet" href="https://use.typekit.net/zcp4dkx.css">-->
-    <style>
-      @import url("https://p.typekit.net/p.css?s=1&k=zcp4dkx&ht=tk&f=169.170.25136.25137.49449.51209&a=1198491&app=typekit&e=css");
-
-      @font-face {
-        font-family:"proxima-nova";
-        src:url("https://use.typekit.net/af/8738d8/00000000000000007735e611/30/l?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n8&v=3") format("woff2"),url("https://use.typekit.net/af/8738d8/00000000000000007735e611/30/d?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n8&v=3") format("woff"),url("https://use.typekit.net/af/8738d8/00000000000000007735e611/30/a?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n8&v=3") format("opentype");
-        font-display:swap;font-style:normal;font-weight:800;font-stretch:normal;
-      }
-
-      @font-face {
-        font-family:"proxima-nova";
-        src:url("https://use.typekit.net/af/58acf5/00000000000000007735e622/30/l?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i8&v=3") format("woff2"),url("https://use.typekit.net/af/58acf5/00000000000000007735e622/30/d?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i8&v=3") format("woff"),url("https://use.typekit.net/af/58acf5/00000000000000007735e622/30/a?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i8&v=3") format("opentype");
-        font-display:swap;font-style:italic;font-weight:800;font-stretch:normal;
-      }
-
-      @font-face {
-        font-family:"proxima-nova";
-        src:url("https://use.typekit.net/af/23e139/00000000000000007735e605/30/l?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n5&v=3") format("woff2"),url("https://use.typekit.net/af/23e139/00000000000000007735e605/30/d?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n5&v=3") format("woff"),url("https://use.typekit.net/af/23e139/00000000000000007735e605/30/a?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n5&v=3") format("opentype");
-        font-display:swap;font-style:normal;font-weight:500;font-stretch:normal;
-      }
-
-      @font-face {
-        font-family:"proxima-nova";
-        src:url("https://use.typekit.net/af/79862c/00000000000000007735e60e/30/l?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i5&v=3") format("woff2"),url("https://use.typekit.net/af/79862c/00000000000000007735e60e/30/d?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i5&v=3") format("woff"),url("https://use.typekit.net/af/79862c/00000000000000007735e60e/30/a?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i5&v=3") format("opentype");
-        font-display:swap;font-style:italic;font-weight:500;font-stretch:normal;
-      }
-
-      @font-face {
-        font-family:"quincy-cf";
-        src:url("https://use.typekit.net/af/afa5db/00000000000000007735fcf5/30/l?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n9&v=3") format("woff2"),url("https://use.typekit.net/af/afa5db/00000000000000007735fcf5/30/d?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n9&v=3") format("woff"),url("https://use.typekit.net/af/afa5db/00000000000000007735fcf5/30/a?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=n9&v=3") format("opentype");
-        font-display:swap;font-style:normal;font-weight:900;font-stretch:normal;
-      }
-
-      @font-face {
-        font-family:"quincy-cf";
-        src:url("https://use.typekit.net/af/8587af/00000000000000007736879a/30/l?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i9&v=3") format("woff2"),url("https://use.typekit.net/af/8587af/00000000000000007736879a/30/d?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i9&v=3") format("woff"),url("https://use.typekit.net/af/8587af/00000000000000007736879a/30/a?primer=388f68b35a7cbf1ee3543172445c23e26935269fadd3b392a13ac7b2903677eb&fvd=i9&v=3") format("opentype");
-        font-display:swap;font-style:italic;font-weight:900;font-stretch:normal;
-      }
-    </style>
+    <link rel="stylesheet" href="https://use.typekit.net/zcp4dkx.css">
     <MetaTags {...meta} />
   </head>
 
