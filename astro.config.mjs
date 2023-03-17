@@ -42,7 +42,9 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => page !== 'https://jonathanfalcon.com/chart/'
+    }),
     image({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
