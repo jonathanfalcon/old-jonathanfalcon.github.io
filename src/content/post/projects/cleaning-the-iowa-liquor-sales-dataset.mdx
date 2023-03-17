@@ -123,7 +123,7 @@ All together, this section aimed to condense the number of alcohol categories to
 
 Now, admittedly, this section used pure brute force. Is there a more elegant and efficient solution? Perhaps, but I couldn't find it in time.
 
-In this first part, we select the `category` and `item` columns from `liquorSales`, keeps observations with missing categories, groups by `item`, and counts the number of observations by that grouping variable `item`. Lastly, it sorts the summary by the `item` count descending.
+In this first part, we select the `category` and `item` columns from `liquorSales`, keep observations with missing categories, group by `item`, and count the number of observations by that grouping variable `item`. Lastly, we sort the summary by the `item` count descending.
 
 ```r
 liquorSales %>%
