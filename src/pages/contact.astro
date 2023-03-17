@@ -33,7 +33,7 @@ const meta = {
     
   </Contact>
 </Layout>
-<script isInline>
+<script is:inline>
   window.addEventListener("load", function() {
     const form = document.forms['contact'];
     form.addEventListener("submit", function(e) {
@@ -52,6 +52,7 @@ const meta = {
         .then(() => {
         document.getElementById("loading-msg").classList.add("opacity-0", "pointer-events-none");
         document.getElementById("completion-msg").classList.remove("opacity-0", "pointer-events-none");
+        document.getElementById("form").reset();
         })
       });
     });
