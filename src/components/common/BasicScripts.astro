@@ -38,7 +38,7 @@ import { SITE } from '~/config.mjs';
     attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
       elem.classList.toggle('expanded');
       document.body.classList.toggle('overflow-hidden');
-      document.querySelector('#header nav')?.classList.toggle('h-screen');
+      document.querySelector('#header nav')?.classList.toggle('h-dynamic-screen-minus-nav');
       document.querySelector('#header nav')?.classList.toggle('opacity-100');
       });
 

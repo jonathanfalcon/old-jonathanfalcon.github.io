@@ -8,6 +8,9 @@ module.exports = {
       minHeight: {
         'small-screen-minus-nav': ['calc(100vh - 60px) /* fallback */', 'calc(100svh - 60px)'],
       },
+      height: {
+        'dynamic-screen-minus-nav': ['calc(100vh - 60px) /* fallback */', 'calc(100dvh - 60px)'],
+      },
       screens: {
         'xs': '350px',
         ...defaultTheme.screens,
