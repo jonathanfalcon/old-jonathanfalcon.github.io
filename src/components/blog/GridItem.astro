@@ -19,11 +19,11 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
 
 <article class="mb-6 transition">
     <a href={getPermalink(post.permalink, 'post')}>
-      <div class="relative pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded-3xl shadow-xl hover:scale-[1.05] active:scale-[1] transition duration-300 mb-5">
+      <div class="relative hover:scale-[1.05] active:scale-[1] transition duration-300 mb-5">
         {image && (
           <Picture
             src={image}
-            class="absolute inset-0 object-contain w-full h-full rounded bg-gray-400 dark:bg-slate-700"
+            class="w-full h-full rounded-2xl shadow-xl bg-gray-400 dark:bg-slate-700"
             widths={[400, 900, 1400]}
             sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, 1400px"
             alt={post.title}
