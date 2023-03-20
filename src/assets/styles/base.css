@@ -7,46 +7,29 @@
     @apply font-mono;
   }
   
-  .text-page {
-    color: var(--aw-color-text-page);
-  }
-
-  .text-muted {
-    color: var(--aw-color-text-muted);
-  }
-
-  .bg-light {
-    background-color: var(--aw-color-bg-page);
-  }
-
-  .bg-dark {
-    @apply bg-rich-black;
-  }
-
-  
   .btn {
-    @apply inline-flex items-center justify-center rounded-full shadow-md border-gray-700 border-2 bg-transparent text-center text-base text-page transition py-3.5 px-6 md:px-8 duration-200 focus:ring-spring-green-500 focus:ring-offset-spring-green-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-700 hover:text-white dark:text-slate-100 dark:border-slate-400 dark:hover:bg-slate-100 dark:hover:border-slate-100 dark:hover:text-rich-black;
+    @apply inline-flex items-center justify-center rounded-full shadow-md border-gray-700 border-2 bg-transparent text-center text-base text-slate transition py-3.5 px-6 md:px-8 duration-200 focus:ring-primary-700 focus:ring-offset-primary-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-700 hover:text-white dark:text-slate-100 dark:border-slate-400 dark:hover:bg-slate-100 dark:hover:border-slate-100 dark:hover:text-slate;
   }
 
   .btn-ghost {
-    @apply border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+    @apply border-none shadow-none text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
   }
 
   .btn-primary {
-    @apply font-bold bg-spring-green-500 text-white dark:hover:text-white border-spring-green-500 hover:bg-spring-green-800 hover:border-spring-green-800 hover:text-white dark:text-white dark:bg-spring-green-500 dark:border-spring-green-500 dark:hover:border-spring-green-800 dark:hover:bg-spring-green-800;
+    @apply font-bold bg-primary-700 text-white dark:hover:text-white border-primary-700 hover:bg-primary-800 hover:border-primary-800 hover:text-white dark:text-white dark:hover:border-primary-800 dark:hover:bg-primary-800 dark:bg-primary-600 dark:border-primary-600;
   }
 
   .btn-secondary {
-    @apply font-bold bg-nugget-500 text-white border-nugget-500 hover:bg-nugget-800 hover:border-nugget-800 hover:text-white dark:text-white dark:bg-nugget-500 dark:border-nugget-500 dark:hover:border-nugget-800 dark:hover:bg-nugget-800;
+    @apply font-bold bg-secondary-700 text-white dark:hover:text-white border-secondary-700 hover:bg-secondary-800 hover:border-secondary-800 hover:text-white dark:text-white dark:hover:border-secondary-800 dark:hover:bg-secondary-800 dark:bg-secondary-600 dark:border-secondary-600;
   }
 }
 
 #header.scroll {
-  @apply shadow md:shadow-md;
+  @apply dark:border-slate-50/10 border-b;
 }
 
 #header {
-  @apply bg-white/80 backdrop-blur-2xl backdrop-saturate-200 dark:bg-rich-black/80;
+  @apply bg-white/80 backdrop-blur-2xl backdrop-saturate-200 dark:bg-slate/80;
 }
 
 .dropdown:hover .dropdown-menu {

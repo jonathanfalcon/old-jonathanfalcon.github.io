@@ -49,7 +49,7 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
               <>
                 {' '}
                 –{' '}
-                <a class="capitalize text-spring-green-500 dark:text-spring-green-400 hover:underline" href={getPermalink(post.category, 'category')}>
+                <a class="capitalize text-primary-700 dark:text-primary-400 hover:underline" href={getPermalink(post.category, 'category')}>
                   {post.category.replaceAll('-', ' ')}
                 </a>
               </>
@@ -60,7 +60,7 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
       <h2 class="text-2.5xl sm:text-4xl font-bold mb-2 font-serif">
         {
           link ? (
-            <a class="hover:text-primary dark:hover:text-spring-green-400 transition duration-200" href={link}>
+            <a class="hover:text-primary-700 dark:hover:text-primary-400 transition duration-200" href={link}>
               {post.title}
             </a>
           ) : (

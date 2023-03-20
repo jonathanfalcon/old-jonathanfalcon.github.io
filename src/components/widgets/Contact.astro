@@ -40,24 +40,24 @@ const {
         }
         <ul class="flex justify-center lg:gap-20 md:gap-12 gap-8 md:mb-12 mb-6">
           <li>
-            <a class="text-muted hover:text-spring-green-500 dark:hover:text-spring-green-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="LinkedIn" href="https://www.linkedin.com/in/jqfalcon/">
+            <a class="text-gray-600 hover:text-primary-700 dark:hover:text-primary-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="LinkedIn" href="https://www.linkedin.com/in/jqfalcon/">
               <Icon class="lg:w-20 lg:h-20 md:w-16 md:h-16 w-12 h-12" name="simple-icons:linkedin"/>
 
             </a>
           </li><li>
-          <a class="text-muted hover:text-spring-green-500 dark:hover:text-spring-green-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="GitHub" href="https://github.com/jonathanfalcon">
+          <a class="text-gray-600 hover:text-primary-700 dark:hover:text-primary-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="GitHub" href="https://github.com/jonathanfalcon">
             <Icon class="lg:w-20 lg:h-20 md:w-16 md:h-16 w-12 h-12" name="simple-icons:github"/>
 
           </a>
         </li><li>
-          <a class="text-muted hover:text-spring-green-500 dark:hover:text-spring-green-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="Unsplash" href="https://unsplash.com/@jonathanfalcon">
+          <a class="text-gray-600 hover:text-primary-700 dark:hover:text-primary-400 dark:text-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 inline-flex items-center duration-200 transition" aria-label="Unsplash" href="https://unsplash.com/@jonathanfalcon">
             <Icon class="lg:w-20 lg:h-20 md:w-16 md:h-16 w-12 h-12" name="simple-icons:unsplash"/>
 
           </a>
         </li>
         </ul>
         <div class="mx-auto lg:max-w-none">
-          {subtitle && <p class="text-xl md:text-2xl text-muted mb-6 dark:text-slate-300" set:html={subtitle} />}
+          {subtitle && <p class="text-xl md:text-2xl text-gray-600 mb-6 dark:text-slate-300" set:html={subtitle} />}
           <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl">
             {
               callToAction && (
@@ -101,25 +101,25 @@ const {
         </div>
         {content && <Fragment set:html={content} />}
       </div>
-      <div class="relative basis-1/2 w-full h-fit md:p-10 px-6 py-4 lg:rounded-[1.5rem] rounded-2xl bg-gray-200 dark:bg-rich-black shadow-2xl shadow-slate-600/20 border-gray-300 dark:border-slate-700 border-2">
+      <div class="relative basis-1/2 w-full h-fit md:p-10 px-6 py-4 lg:rounded-[1.5rem] rounded-2xl bg-gray-200 dark:bg-slate shadow-2xl shadow-slate-600/20 border-gray-300 dark:border-slate-700 border-2">
         <form name="contact" id="form" action="https://script.google.com/macros/s/AKfycbxueXZ-idc-kiZW_otSSjk5m3DSYWATDFFEs-GzZorH7qcqDBgMv0PSvKrLsloVdUY-/exec" class="space-y-8 transition duration-300">
           <div class="flex flex-wrap -mx-3">
               <div class="w-full md:w-1/2 px-3 md:mb-0 mb-4">
-                <label for="firstName" class="block mb-2 font-bold md:text-2xl text-xl text-rich-black dark:text-white">First Name</label>
-                <input type="text" name="firstName" id="firstName" class="block p-2.5 w-full text-lg bg-gray-50 rounded-xl border-gray-300 shadow-sm focus:outline-none focus:border-rich-black dark:bg-slate-700 dark:border-slate-500 dark:placeholder-gray-200 dark:text-white dark:focus:border-slate-100 border-4" placeholder="First" required>
+                <label for="firstName" class="block mb-2 font-bold md:text-2xl text-xl text-slate dark:text-white">First Name</label>
+                <input type="text" name="firstName" id="firstName" class="block p-2.5 w-full text-lg bg-gray-50 rounded-xl border-gray-300 shadow-sm focus:outline-none focus:border-slate dark:bg-slate-700 dark:border-slate-500 dark:placeholder-gray-200 dark:text-white dark:focus:border-slate-100 border-4" placeholder="First" required>
               </div>
               <div class="w-full md:w-1/2 px-3">
-                <label for="lastName" class="block mb-2 font-bold md:text-2xl text-xl text-rich-black dark:text-white">Last Name</label>
-                <input type="text" name="lastName" id="lastName" class="block p-2.5 w-full text-lg bg-gray-50 rounded-xl border-gray-300 shadow-sm focus:outline-none focus:border-rich-black dark:bg-slate-700 dark:border-slate-500 dark:placeholder-gray-200 dark:text-white dark:focus:border-slate-100 border-4" placeholder="Last" required>
+                <label for="lastName" class="block mb-2 font-bold md:text-2xl text-xl text-slate dark:text-white">Last Name</label>
+                <input type="text" name="lastName" id="lastName" class="block p-2.5 w-full text-lg bg-gray-50 rounded-xl border-gray-300 shadow-sm focus:outline-none focus:border-slate dark:bg-slate-700 dark:border-slate-500 dark:placeholder-gray-200 dark:text-white dark:focus:border-slate-100 border-4" placeholder="Last" required>
               </div>
           </div>
           <div>
-            <label for="email" class="block mb-2 font-bold md:text-2xl text-xl text-rich-black dark:text-white">Email</label>
-            <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border-gray-300 text-lg rounded-xl focus:outline-none focus:border-rich-black block w-full p-2.5 dark:bg-slate-700 dark:border-slate-500 dark:placeholder-gray-200 dark:text-white dark:focus:border-slate-100 border-4" placeholder="name@domain.com" required>
+            <label for="email" class="block mb-2 font-bold md:text-2xl text-xl text-slate dark:text-white">Email</label>
+            <input type="email" name="email" id="email" class="shadow-sm bg-gray-50 border-gray-300 text-lg rounded-xl focus:outline-none focus:border-slate block w-full p-2.5 dark:bg-slate-700 dark:border-slate-500 dark:placeholder-gray-200 dark:text-white dark:focus:border-slate-100 border-4" placeholder="name@domain.com" required>
           </div>
           <div class="sm:col-span-2">
-            <label for="message" class="block mb-2 font-bold md:text-2xl text-xl text-rich-black dark:text-white">Optional Message</label>
-            <textarea name="message" id="message" rows="4" class="block p-2.5 w-full text-lg bg-gray-50 rounded-xl shadow-sm border-gray-300 focus:outline-none focus:border-rich-black dark:bg-slate-700 dark:border-slate-500 dark:placeholder-gray-200 dark:text-white dark:focus:border-slate-100 border-4" placeholder="Leave a comment..."></textarea>
+            <label for="message" class="block mb-2 font-bold md:text-2xl text-xl text-slate dark:text-white">Optional Message</label>
+            <textarea name="message" id="message" rows="4" class="block p-2.5 w-full text-lg bg-gray-50 rounded-xl shadow-sm border-gray-300 focus:outline-none focus:border-slate dark:bg-slate-700 dark:border-slate-500 dark:placeholder-gray-200 dark:text-white dark:focus:border-slate-100 border-4" placeholder="Leave a comment..."></textarea>
           </div>
           <button type="submit" class="ml-auto flex btn btn-primary text-2xl">Send<Icon name="ph:paper-plane-right-bold" class="w-6 h-6 ml-3 -mr-1" /></button>
         </form>

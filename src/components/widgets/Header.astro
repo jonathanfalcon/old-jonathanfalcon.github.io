@@ -70,7 +70,7 @@ const {
                   <button class="hover:text-gray-900 dark:hover:text-white px-4 pt-2 flex items-center transition duration-150">
                     {text} <Icon name="ph:caret-down-fill" class="w-3.5 h-3.5 ml-0.5 hidden md:inline" />
                   </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden md:bg-white/90 md:min-w-[200px] drop-shadow-xl md:border-2 dark:border-slate-700">
+                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-slate/90 rounded md:absolute pl-4 md:pl-0 md:hidden md:bg-white/90 md:min-w-[200px] drop-shadow-xl md:border-2 dark:border-slate-700">
                     {links.map(({ text: text2, href: href2 }) => (
                       <li class="md:mb-0 mb-1">
                         <a
@@ -85,7 +85,7 @@ const {
                 </>
               ) : (
                 <a
-                  class="dark:text-white px-4 md:py-2 py-5 flex items-center transition duration-150 hover:bg-black/10 dark:hover:bg-white/20 rounded-lg"
+                  class="dark:text-white px-4 md:py-2 py-5 flex items-center transition duration-150 hover:bg-slate/10 dark:hover:bg-white/20 rounded-lg"
                   href={href}
                 >
                   {text}
@@ -103,7 +103,7 @@ const {
         {
           showRssFeed && (
             <a
-              class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+              class="text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
               aria-label="RSS Feed"
               href={getAsset('/rss.xml')}
             >

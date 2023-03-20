@@ -63,14 +63,14 @@ const {
         }
         <div class="mx-auto lg:max-w-none">
           {subtitle && <p class="text-gray-800 mb-6 dark:text-slate-200 xl:leading-9 text-xl md:text-2xl xl:text-2.5xl" set:html={subtitle} />}
-          <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl">
+          <div class="m-auto flex flex-nowrap justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl">
             {
               callToAction && (
                 <div class="flex">
                   {typeof callToAction === 'string' ? (
                     <Fragment set:html={callToAction} />
                   ) : (
-                    <a class="btn btn-primary md:text-2xl" href={callToAction?.href} rel="noopener">
+                    <a class="btn btn-secondary md:text-2xl" href={callToAction?.href} rel="noopener">
                       {callToAction?.icon && (
                         <>
                           {''}

@@ -22,7 +22,7 @@ let baseStyleFix = 'max-md:prose-p:text-[1.075rem] max-md:prose-li:text-[1.075re
 let baseStyle = `'mt-8 mx-auto px-4 sm:px-6 max-w-4xl prose lg:prose-xl md:prose-lg dark:prose-invert ${baseStyleFix}'`;
 
 let baseTableStyle = 'prose-table:min-w-[30rem] prose-table:table-auto md:prose-table:text-lg prose-table:text-base prose-table:my-0';
-let tableHeadStyle = 'prose-thead:bg-spring-green-500 prose-th:text-white prose-thead:border-none';
+let tableHeadStyle = 'prose-thead:bg-primary-700 prose-th:text-white prose-thead:border-none';
 let tableRowStyle = 'even:prose-tr:bg-gray-200 dark:even:prose-tr:bg-slate-700';
 let tableDataStyle = 'prose-td:px-4 prose-th:px-4 prose-td:align-middle prose-th:align-middle prose-th:py-3 prose-td:py-3';
 let tableStyle = `${baseTableStyle} ${tableHeadStyle} ${tableRowStyle} ${tableDataStyle}`;
@@ -67,7 +67,7 @@ let proseStyle = `${baseStyle} ${tableStyle} ${headingStyle} ${paragraphStyle} $
               <>
                 {' '}
                 –{' '}
-                <a class="capitalize text-spring-green-500 dark:text-spring-green-400 hover:underline" href={getPermalink(post.category, 'category')}>
+                <a class="capitalize text-primary-700 dark:text-primary-400 hover:underline" href={getPermalink(post.category, 'category')}>
                   {post.category.replaceAll('-', ' ')}
                 </a>
               </>
