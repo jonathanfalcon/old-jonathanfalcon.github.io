@@ -11,34 +11,34 @@ const { text, url, class: className = 'inline-block' } = Astro.props;
 ---
 
 <div class=`text-gray-500 dark:text-slate-400 ${className}`>
-  <span class="align-super">Share:</span>
-  <button class="ml-2" title="Share to Twitter" data-aw-social-share="twitter" data-aw-url={url} data-aw-text={text}
+  <span>Share:</span>
+  <button title="Share with Messages" data-aw-social-share="sms" data-aw-url={url} data-aw-text={text}
+  ><Icon
+    name="mdi:chat"
+    class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
+  />
+  </button>
+  <button title="Share with Email" data-aw-social-share="email" data-aw-url={url} data-aw-text={text}
+  ><Icon
+    name="mdi:email"
+    class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
+  />
+  </button>
+  <button title="Share to LinkedIn" data-aw-social-share="linkedin" data-aw-url={url} data-aw-text={text}
+  ><Icon
+    name="mdi:linkedin"
+    class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
+  />
+  </button>
+  <button title="Share to Twitter" data-aw-social-share="twitter" data-aw-url={url} data-aw-text={text}
     ><Icon
-      name="ri:twitter-fill"
+      name="mdi:twitter"
       class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
     />
   </button>
-  <button class="ml-2" title="Share to Facebook" data-aw-social-share="facebook" data-aw-url={url}
+  <button title="Share to Facebook" data-aw-social-share="facebook" data-aw-url={url}
     ><Icon
-      name="ri:facebook-box-fill"
-      class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
-    />
-  </button>
-  <button class="ml-2" title="Share to LinkedIn" data-aw-social-share="linkedin" data-aw-url={url} data-aw-text={text}
-    ><Icon
-      name="ri:linkedin-box-fill"
-      class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
-    />
-  </button>
-  <button class="ml-2" title="Share with WhatsApp" data-aw-social-share="whatsapp" data-aw-url={url} data-aw-text={text}
-    ><Icon
-      name="ri:whatsapp-fill"
-      class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
-    />
-  </button>
-  <button class="ml-2" title="Share with Email" data-aw-social-share="mail" data-aw-url={url} data-aw-text={text}
-    ><Icon
-      name="ri:mail-fill"
+      name="mdi:facebook-box"
       class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
     />
   </button>
