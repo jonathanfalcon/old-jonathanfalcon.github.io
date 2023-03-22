@@ -47,7 +47,7 @@ module.exports = {
         'white': '#ffffff',
         'black': '#001220',
         'slate': {
-          DEFAULT: '#070A14',
+          DEFAULT: '#0b0e1c',
           50: '#f7fbff',
           100: '#f1f6ff',
           200: '#e4eafb',
@@ -57,7 +57,7 @@ module.exports = {
           600: '#626a83',
           700: '#384057',
           800: '#161b2b',
-          900: '#070A14'
+          900: '#0b0e1c'
         },
         'nugget': {
           50: '#fcfaf4',
