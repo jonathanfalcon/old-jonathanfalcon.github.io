@@ -3,7 +3,7 @@ import defaultImage from './assets/images/opengraph.jpg';
 const CONFIG = {
   name: 'Jonathan Falcon',
 
-  origin: 'https://jonathanfalcon.com',
+  origin: 'https://jonathanfalcon.com/',
   basePathname: '/',
   trailingSlash: true,
 
