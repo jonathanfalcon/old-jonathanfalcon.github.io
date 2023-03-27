@@ -71,7 +71,7 @@ import { SITE } from '~/config.mjs';
           href = `https://twitter.com/intent/tweet?url=${url+utmLinks['twitter']}&text=${text}`;
           break;
         case 'linkedin':
-          href = `https://www.linkedin.com/shareArticle?mini=true&url=${url+utmLinks['linkedin']}&title=${text}`;
+          href = `https://www.linkedin.com/sharing/share-offsite/?url=${url+utmLinks['linkedin']}`;
           break;
         case 'sms':
           href = `sms:&body=${url+utmLinks['sms']}`;
