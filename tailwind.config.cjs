@@ -128,7 +128,7 @@ module.exports = {
           800: '#B37D00',
           900: '#805900'
         },
-        'txst': {
+        'bobcat': {
           50: '#F8DEDF',
           100: '#F0BCBE',
           200: '#E17A7D',
@@ -140,7 +140,7 @@ module.exports = {
           800: '#210708',
           900: '#110404'
         },
-        'texas': {
+        'longhorn': {
           50: '#FFEEE0',
           100: '#FFDDC2',
           200: '#FFB980',
