@@ -327,6 +327,9 @@ module.exports = {
         '.highlight': {
           background: 'url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22cu…1 1h-7zm-170-1h2l-2 1v-1zm180 0 12-1-6 1h-6zm-40-2h2-2V8z%22/%3E%3C/svg%3E")'
         },
+        '.underline-position-under': {
+          'text-underline-position': 'under',
+        }
       })
     }],
   darkMode: 'class',  
