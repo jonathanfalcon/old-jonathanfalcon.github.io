@@ -1,5 +1,14 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const theme = require("tailwindcss/defaultTheme");
+
+const round = (num) =>
+  num
+    .toFixed(7)
+    .replace(/(\.[0-9]+?)0+$/, '$1')
+    .replace(/\.0$/, '')
+const rem = (px) => `${round(px / 16)}rem`
+const em = (px, base) => `${round(px / base)}em`
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
@@ -161,6 +170,136 @@ module.exports = {
       boxShadow: {
         '3xl': '0 10px 60px -15px rgba(0, 0, 0, 0.3)',
         '4xl': '0 10px 100px -20px rgba(0, 0, 0, 0.3)',
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            fontSize: rem(17),
+            lineHeight: round(28 / 17),
+            color: null,
+            maxWidth: null,
+            
+            code: {
+              color: null,
+            },
+
+            'code::before': {
+              content: null,
+            },
+            'code::after': {
+              content: null,
+            },
+            
+            blockquote: {
+              color: null,
+            },
+            
+            strong: {
+              color: null,
+              fontWeight: '700',
+            },
+
+            a: {
+              fontWeight: null,
+              textDecorationThickness: '2px',
+              textUnderlinePosition: 'under',
+            },
+            
+            table: {
+              width: '100%',
+              tableLayout: null,
+              textAlign: 'left',
+              overflow: 'auto',
+              display: 'block',
+            },
+            thead: {
+              borderBottomWidth: null,
+              borderBottomColor: null,
+            },
+            'thead th': {
+              color: null,
+              fontWeight: '700',
+              verticalAlign: 'bottom',
+              minWidth: '150px',
+            },
+            'tbody tr': {
+              borderBottomWidth: '1px',
+              borderBottomColor: 'var(--tw-prose-td-borders)',
+            },
+            'tbody tr:last-child': {
+              borderBottomWidth: '7px',
+            },
+            'tbody td': {
+              verticalAlign: 'middle',
+            },
+            tfoot: {
+              borderTopWidth: '1px',
+              borderTopColor: 'var(--tw-prose-th-borders)',
+            },
+            'tfoot td': {
+              verticalAlign: 'top',
+            },
+            
+            'ol > li::marker': {
+              fontWeight: null,
+              color: null,
+            },
+            'ul > li::marker': {
+              color: null,
+            },
+            h2: {
+              fontWeight: '800',
+              fontSize: em(36, 20),
+              marginTop: em(56, 36),
+              marginBottom: em(32, 36),
+              lineHeight: round(40 / 36),
+              color: null,
+              textTransform: 'uppercase',
+            },
+            h3: {
+              fontWeight: '800',
+              fontSize: em(30, 20),
+              marginTop: em(48, 30),
+              marginBottom: em(20, 30),
+              lineHeight: round(40 / 30),
+              color: null,
+            },
+            h4: {
+              fontWeight: '700',
+              fontSize: em(24, 20),
+              marginTop: em(36, 20),
+              marginBottom: em(12, 20),
+              lineHeight: round(32 / 20),
+              color: null,
+            },
+          },
+        },
+        xl: {
+          css: {
+            a: {
+              textDecorationThickness: '3px',
+            },
+            
+            h2: {
+              fontSize: em(48, 24),
+              marginTop: em(72, 48),
+              marginBottom: em(40, 48),
+              lineHeight: round(52 / 48),
+            },
+            h3: {
+              fontSize: em(36, 24),
+              marginTop: em(56, 36),
+              marginBottom: em(24, 36),
+              lineHeight: round(44 / 36),
+            },
+            h4: {
+              fontSize: em(30, 24),
+              marginTop: em(40, 24),
+              marginBottom: em(16, 24),
+              lineHeight: round(36 / 24),
+            },
+          },
+        },
       }
     },
   },
@@ -189,3 +328,4 @@ module.exports = {
     }],
   darkMode: 'class',  
 };
+
