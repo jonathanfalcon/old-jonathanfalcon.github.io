@@ -242,6 +242,18 @@ module.exports = {
             'tfoot td': {
               verticalAlign: 'top',
             },
+            td: {
+              paddingLeft: '1rem',
+              paddingRight: '1rem',
+              paddingTop: '0.75rem',
+              paddingBottom: '0.75rem',
+            },
+            th: {
+              paddingLeft: '1rem',
+              paddingRight: '1rem',
+              paddingTop: '0.75rem',
+              paddingBottom: '0.75rem',
+            },
             
             'ol > li::marker': {
               fontWeight: null,
@@ -279,8 +291,17 @@ module.exports = {
         },
         xl: {
           css: {
-            a: {
-              textDecorationThickness: '3px',
+            td: {
+              paddingLeft: '1rem',
+              paddingRight: '1rem',
+              paddingTop: '0.75rem',
+              paddingBottom: '0.75rem',
+            },
+            th: {
+              paddingLeft: '1rem',
+              paddingRight: '1rem',
+              paddingTop: '0.75rem',
+              paddingBottom: '0.75rem',
             },
             
             h2: {
