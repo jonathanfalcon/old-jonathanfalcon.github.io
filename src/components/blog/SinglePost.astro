@@ -42,11 +42,14 @@ let textColor = 'text-inherit dark:text-inherit prose-li:marker:text-inherit dar
 
 let linkStyle = 'prose-a:duration-200 prose-a:transition prose-a:text-blue-600 hover:prose-a:text-blue-900 dark:hover:prose-a:text-blue-500 dark:prose-a:text-blue-300';
 
-let imageStyle = 'prose-img:rounded-2xl prose-img:shadow-lg';
+let imageStyle = 'lg:prose-img:rounded-2xl lg:prose-img:shadow-lg max-lg:prose-img:-mx-4';
+
+// Try later
+//let imageStyle = 'lg:prose-img:rounded-2xl lg:prose-img:shadow-lg max-lg:prose-img:-mx-4';
 
 let preStyle = '#prose-pre:!bg-gray-100';
 
-let proseStyle = `${baseStyle} ${tableStyle} ${linkStyle}`;
+let proseStyle = `${baseStyle} ${tableStyle} ${linkStyle} ${imageStyle}`;
 
 //proseStyle = `max-w-4xl mx-auto px-4 prose md:prose-xl dark:prose-invert`;
 ---
