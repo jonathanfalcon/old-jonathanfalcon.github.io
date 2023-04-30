@@ -205,7 +205,6 @@ module.exports = {
             a: {
               fontWeight: null,
               textDecorationThickness: '2px',
-              textUnderlinePosition: 'under',
             },
             
             table: {

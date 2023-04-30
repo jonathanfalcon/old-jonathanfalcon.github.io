@@ -12,7 +12,7 @@ const { name, issuer, link, year } = Astro.props;
 
 <div class="flex items-stretch">
   <div class="experience__data mb-15 mr-auto">
-    <h3 class="font-bold md:text-2.5xl text-1.5xl leading-none underline md:decoration-[3px] decoration-2 underline-position-under hover:text-primary-600 dark:hover:text-primary-400 transition duration-200 mb-3 basis-4/5">
+    <h3 class="font-bold md:text-2.5xl text-1.5xl leading-none underline decoration-2 underline-offset-2 hover:text-primary-600 dark:hover:text-primary-400 transition duration-200 mb-3 basis-4/5">
       <a href={link} target="_blank">{name}</a>
     </h3>
     <h4 class="md:text-1.5xl text-xl">{issuer}</h4>
