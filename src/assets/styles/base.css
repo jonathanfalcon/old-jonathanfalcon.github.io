@@ -29,7 +29,7 @@
 }
 
 #header {
-  @apply bg-white/80 backdrop-blur-2xl backdrop-saturate-200 dark:bg-slate/80;
+  @apply bg-white/80 backdrop-blur-xl backdrop-saturate-200 dark:bg-slate/80;
 }
 
 .dropdown:hover .dropdown-menu {
