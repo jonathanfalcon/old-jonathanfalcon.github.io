@@ -185,6 +185,15 @@ module.exports = {
             code: {
               color: null,
             },
+            
+            'code:not(pre code, table code)': {
+              padding: '0.2rem 0.4rem',
+              borderRadius: '0.375rem',
+              fontSize: '0.8em !important',
+              backgroundColor: 'rgb(229, 231, 235)',
+              whiteSpace: 'nowrap',
+              userSelect: 'all',
+            },
 
             'code::before': {
               content: null,
@@ -287,6 +296,13 @@ module.exports = {
               color: null,
             },
           },
+        },
+        invert: {
+          css: {
+            'code:not(pre code)': {
+              backgroundColor: 'rgb(56, 64, 87)',
+            },
+          }
         },
         xl: {
           css: {
