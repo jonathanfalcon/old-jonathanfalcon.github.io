@@ -26,7 +26,7 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
       <a class="relative hover:scale-[1.05] active:scale-[1] transition duration-300" href={link ?? 'javascript:void(0)'}>
             <Picture
               src={image}
-              class="w-full h-full rounded-3xl shadow-xl bg-gray-400 dark:bg-slate-700"
+              class="w-full h-full rounded-2xl shadow-xl bg-gray-400 dark:bg-slate-700"
               widths={[400, 900, 1400]}
               sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, 1400px"
               alt={post.title}
