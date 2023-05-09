@@ -40,6 +40,12 @@ import { SITE } from '~/config.mjs';
       document.body.classList.toggle('overflow-hidden');
       document.querySelector('#header nav')?.classList.toggle('h-dynamic-screen-minus-nav');
       document.querySelector('#header nav')?.classList.toggle('opacity-100');
+      const header = document.getElementById('header');
+      if (!header.classList.contains('scroll')) {
+        document.getElementById('header').classList.add('scroll');
+      } else if (lastKnownScrollPosition <= 40 && header.classList.contains('scroll')) {
+        document.getElementById('header').classList.remove('scroll');
+      }
       });
 
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
