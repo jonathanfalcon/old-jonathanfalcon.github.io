@@ -305,7 +305,7 @@ module.exports = {
         },
         invert: {
           css: {
-            'code:not(pre code)': {
+            'code:not(pre code, table code)': {
               backgroundColor: 'rgb(56, 64, 87)',
             },
           }
