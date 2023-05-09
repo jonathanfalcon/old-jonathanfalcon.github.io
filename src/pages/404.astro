@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
-import { getImage } from '@astrojs/image';
 import { Icon } from "astro-icon";
 
 const title = `Error 404`;
@@ -15,7 +14,6 @@ const title = `Error 404`;
           <span class="text-white">404</span>
         </h2>
         <p class="text-xl text-white mt-4 mb-10">Sorry, chief, we couldn't find that page.</p>
-        
         <div class="lg:flex grid lg:gap-10 gap-6">
           <a rel="noopener noreferrer" href={getHomePermalink()} class="btn btn-primary md:text-xl text-lg font-normal">Back to Home<Icon name="ph:house-fill" class="w-6 h-6 ml-3"/></a>
           <a rel="noopener noreferrer" href="https://unsplash.com/@jonathanfalcon" class="btn border-white text-white hover:bg-white hover:text-slate dark:border-white md:text-xl text-lg">More Images<Icon name="simple-icons:unsplash" class="w-5 h-5 ml-4"/></a>
