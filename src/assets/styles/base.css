@@ -25,11 +25,11 @@
 }
 
 #header.scroll {
-  @apply dark:border-slate-50/10 border-b;
+  @apply border-gray-200 dark:border-slate-750 bg-white/80 backdrop-blur-xl backdrop-saturate-200 dark:bg-slate/80;
 }
 
 #header {
-  @apply bg-white/80 backdrop-blur-xl backdrop-saturate-200 dark:bg-slate/80;
+  @apply bg-white/0 backdrop-blur-none backdrop-saturate-100 dark:bg-slate/0 border-b border-transparent transition duration-300;
 }
 
 .dropdown:hover .dropdown-menu {
