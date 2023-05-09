@@ -16,9 +16,11 @@ module.exports = {
     extend: {
       minHeight: {
         'small-screen-minus-nav': ['calc(100vh - 60px) /* fallback */', 'calc(100svh - 60px)'],
+        'small-screen': ['100vh /* fallback */', '100svh'],
       },
       height: {
         'dynamic-screen-minus-nav': ['calc(100vh - 60px) /* fallback */', 'calc(100dvh - 60px)'],
+        'dynamic-screen': ['100vh /* fallback */', '100dvh'],
       },
       screens: {
         'xs': '350px',
