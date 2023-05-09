@@ -58,3 +58,7 @@ main > :first-child {
 [data-aw-toggle-menu].expanded g > path:last-child {
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
+
+.bg-image-404 {
+  @apply bg-[url("/404/404_small.webp")] dark:bg-[url("/404/404_dark_small.webp")] md:bg-[url("/404/404.webp")] md:dark:bg-[url("/404/404_dark.webp")];
+}
