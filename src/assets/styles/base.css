@@ -36,6 +36,9 @@
   display: block;
 }
 
+main > :first-child {
+  @apply pt-[60px];
+}
 
 [astro-icon].icon-light > * {
   stroke-width: 1.2;
