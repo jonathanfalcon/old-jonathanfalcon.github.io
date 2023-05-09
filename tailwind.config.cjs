@@ -132,6 +132,8 @@ module.exports = {
           900: '#805900'
         },
         'bobcat': {
+          DEFAULT: '#571c1f',
+          'gold': '#ac9155',
           50: '#F8DEDF',
           100: '#F0BCBE',
           200: '#E17A7D',
@@ -144,6 +146,7 @@ module.exports = {
           900: '#110404'
         },
         'longhorn': {
+          DEFAULT: '#BF5700',
           50: '#FFEEE0',
           100: '#FFDDC2',
           200: '#FFB980',
