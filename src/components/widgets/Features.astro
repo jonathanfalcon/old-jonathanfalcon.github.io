@@ -27,46 +27,36 @@ const {
   <div class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
     {
       (title || subtitle || highlight) && (
-        <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
+        <div class="mb-10 md:mx-auto text-center md:mb-14 max-w-3xl">
           {highlight && (
             <p
-              class="text-base text-primary-700 dark:text-blue-200 font-bold uppercase"
+              class="text-base text-primary-700 dark:text-blue-200 font-semibold uppercase"
               set:html={highlight}
             />
           )}
           {title && (
             <h2
-              class="text-4xl md:text-6xl font-bold mb-4 font-serif"
+              class="text-4xl md:text-6xl font-black mb-4 font-serif"
               set:html={title}
             />
           )}
 
           {subtitle && (
-            <p class="max-w-3xl mx-auto sm:text-center md:text-2xl text-xl leading-tight text-gray-800 dark:text-slate-200" set:html={subtitle} />
+            <p class="max-w-3xl md:text-2xl text-xl leading-tight text-gray-800 dark:text-slate-200" set:html={subtitle} />
           )}
         </div>
       )
     }
-    <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
-      {
-        items.map((subitems) => (
-          <div class="space-y-8 md:px-8">
-            {subitems.map(({ title, description, icon }) => (
-              <div class="flex flex-row">
-                <div class="mb-4 mr-4">
-                  <div class="flex items-center justify-center md:w-14 w-12 md:h-14 h-12 rounded-full bg-primary-700 dark:bg-primary-600">
-                    {icon && <Icon name={icon} class="md:w-7 w-6 md:h-7 w-6 text-white" />}
-                  </div>
-                </div>
-                <div>
-                  <h3 class="mb-3 text-2xl font-bold">{title}</h3>
-                  <p class="text-lg text-gray-800 dark:text-slate-200" set:html={description} />
-                </div>
-              </div>
-            ))}
+    <div class="grid md:grid-cols-2 items-start gap-y-14 gap-x-24 px-2 mt-10">
+      {items.map(({ title, description, icon }) => (
+        <div class="grid md:grid-cols-[min-content_auto] md:gap-x-4 gap-x-3 md:gap-y-0 gap-y-0.5 place-items-start items-center">
+          <div class="flex items-center justify-center md:w-14 w-12 md:h-14 h-12 rounded-full bg-primary-700 dark:bg-primary-500">
+            {icon && <Icon name={icon} class="md:w-7 w-6 md:h-7 w-6 text-white" />}
           </div>
-        ))
-      }
+          <h3 class="md:text-2.5xl text-2xl font-bold md:leading-none md:mb-0 mb-1">{title}</h3>
+          <p class="md:text-xl text-lg text-gray-700 dark:text-slate-300 md:col-start-2 self-start" set:html={description} />
+        </div>
+      ))}
     </div>
   </div>
 </section>
