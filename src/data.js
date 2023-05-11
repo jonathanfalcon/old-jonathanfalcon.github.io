@@ -54,6 +54,7 @@ export const footerData = {
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'simple-icons:linkedin', href: 'https://www.linkedin.com/in/jqfalcon/' },
     { ariaLabel: 'GitHub', icon: 'simple-icons:github', href: 'https://github.com/jonathanfalcon' },
+    { ariaLabel: 'Tableau Public', icon: 'simple-icons:tableau', href: 'https://public.tableau.com/app/profile/falcon' },
     { ariaLabel: 'Unsplash', icon: 'simple-icons:unsplash', href: 'https://unsplash.com/@jonathanfalcon' },
   ],
 };
