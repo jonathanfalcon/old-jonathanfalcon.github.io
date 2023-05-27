@@ -38,6 +38,11 @@ const {
   showRssFeed = false,
   position = 'center',
 } = Astro.props;
+
+
+const hoverStyle = "text-slate dark:text-white px-4 md:py-2 py-5 flex items-center transition duration-150 hover:bg-slate/10 dark:hover:bg-white/20 rounded-lg";
+
+const hoverStyleAlt = "relative after:absolute after:bg-slate dark:after:bg-white after:bottom-0 after:left-0 after:h-1 after:w-full after:translate-y-1 after:rounded-full after:opacity-0 hover:after:translate-y-0 hover:after:opacity-100 after:transition after:ease-in-out after:duration-300 mx-3 px-1";
 ---
 
 <header
@@ -85,7 +90,7 @@ const {
                 </>
               ) : (
                 <a
-                  class="text-slate dark:text-white px-4 md:py-2 py-5 flex items-center transition duration-150 hover:bg-slate/10 dark:hover:bg-white/20 rounded-lg"
+                  class={hoverStyle}
                   href={href}
                 >
                   {text}
