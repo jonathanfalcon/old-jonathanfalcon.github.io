@@ -21,6 +21,10 @@ module.exports = {
       height: {
         'dynamic-screen-minus-nav': ['calc(100vh - 60px) /* fallback */', 'calc(100dvh - 60px)'],
         'dynamic-screen': ['100vh /* fallback */', '100dvh'],
+        '13': '3.25rem',
+      },
+      width: {
+        '13': '3.25rem',
       },
       screens: {
         'xs': '350px',
