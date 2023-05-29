@@ -41,9 +41,9 @@ const meta = {
 ---
 
 <Layout meta={meta}>
-  <section class="px-4 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto xl:max-w-6xl max-w-5xl">
-    <Headline>Tag: {tag}</Headline>
+  <main class="px-4 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto xl:max-w-6xl max-w-5xl">
+    <Headline>Tag: <span class="italic">{tag}</span></Headline>
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-  </section>
+  </main>
 </Layout>
