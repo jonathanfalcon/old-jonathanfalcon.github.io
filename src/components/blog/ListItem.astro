@@ -38,25 +38,8 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
       </a>
     )
   }
-  <div class="mt-2">
+  <div class="md:mt-2">
     <header>
-      <div class="mb-1">
-        <span>
-          <Icon name="mdi:calendar-month" class="w-3.5 h-3.5 inline-block -mt-0.5 text-gray-700 dark:text-gray-300" />
-          <time class="dark:text-gray-300 text-gray-700" datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
-          {
-            post.category && (
-              <>
-                {' '}
-                –{' '}
-                <a class="capitalize text-primary-700 dark:text-primary-400 hover:underline" href={getPermalink(post.category, 'category')}>
-                  {post.category.replaceAll('-', ' ')}
-                </a>
-              </>
-            )
-          }
-        </span>
-      </div>
       <h2 class="text-2.5xl sm:text-4xl font-bold mb-2 font-serif">
         {
           link ? (
