@@ -1,0 +1,134 @@
+---
+import {Picture} from "@astrojs/image/components";
+import { Icon } from 'astro-icon';
+
+const { profileImage, profileAlt, name, title, aboutText, experience, education, certifications, skills } = Astro.props;
+
+const cardStyle = "bg-white dark:bg-slate-800 border border-transparent dark:border-slate-750 rounded-2xl shadow-md sm:p-10 p-5";
+
+---
+
+
+<div class="bg-gray-100 dark:bg-slate-950">
+  <div class="flex md:flex-row flex-col lg:gap-10 gap-5 max-w-[88rem] mx-auto py-5 px-4">
+    <section class=`${cardStyle} md:basis-2/5 md:sticky h-fit md:top-20`>
+      <div class="flex flex-col sm:flex-row md:flex-col xl:flex-row text-center sm:text-left md:text-center xl:text-left mb-3 sm:mb-6 md:mb-3 xl:mb-6 gap-x-10 gap-y-2">
+        <Picture
+          class="rounded-xl mx-auto aspect-square object-cover object-[left_50%_top_50%] xl:w-[200px]"
+          widths={[300, 400, 800]}
+          sizes="(max-width: 299px) 300px, (max-width: 799px) 400px, 800px"
+          aspectRatio={1/1}
+          loading="eager"
+          width={150}
+          height={150}
+          format="webp"
+          src={profileImage}
+          alt={profileAlt}
+          title={name}
+        />
+        <div>
+          <p class="text-3xl font-serif font-black">{name}</p>
+          <p class="text-xl font-semibold text-gray-600 dark:text-slate-300 leading-none">{title}</p>
+          <ul class="flex justify-center xl:gap-x-2 gap-x-3 mt-2 sm:mt-5 md:mt-2 xl:mt-5">
+            <li>
+              <a class="text-gray-600 hover:text-primary-700 dark:hover:text-primary-400 dark:text-slate-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 inline-flex items-center duration-200 transition p-3 rounded-xl hover:bg-gray-200 dark:hover:bg-slate-600" aria-label="LinkedIn" href="https://www.linkedin.com/in/jqfalcon/" title="LinkedIn">
+                <Icon class="w-9 h-9" name="simple-icons:linkedin"/>
+
+              </a>
+            </li><li>
+            <a class="text-gray-600 hover:text-primary-700 dark:hover:text-primary-400 dark:text-slate-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 inline-flex items-center duration-200 transition p-3 rounded-xl hover:bg-gray-200 dark:hover:bg-slate-600" aria-label="GitHub" href="https://github.com/jonathanfalcon" title="GitHub">
+              <Icon class="w-9 h-9" name="simple-icons:github"/>
+
+            </a>
+          </li><li>
+            <a class="text-gray-600 hover:text-primary-700 dark:hover:text-primary-400 dark:text-slate-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 inline-flex items-center duration-200 transition p-3 rounded-xl hover:bg-gray-200 dark:hover:bg-slate-600" aria-label="Tableau Public" title="Tableau Public" href="https://public.tableau.com/app/profile/falcon">
+              <Icon class="w-9 h-9" name="simple-icons:tableau"/>
+
+            </a>
+          </li><li>
+            <a class="text-gray-600 hover:text-primary-700 dark:hover:text-primary-400 dark:text-slate-300 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 inline-flex items-center duration-200 transition p-3 rounded-xl hover:bg-gray-200 dark:hover:bg-slate-600" aria-label="Unsplash" href="https://unsplash.com/@jonathanfalcon" title="Unsplash">
+              <Icon class="w-9 h-9" name="simple-icons:unsplash"/>
+
+            </a>
+          </li>
+          </ul>
+        </div>
+      </div>
+      <h1 class="text-3xl font-serif font-black">About Me</h1>
+      <p class="md:text-lg mt-2">{aboutText}</p>
+    </section>
+
+    <div class="md:basis-3/5 lg:gap-y-10 gap-y-5 flex-col flex">
+      <section class={cardStyle}>
+        <h2 class="text-3xl font-black font-serif mb-6">Education</h2>
+        <ul>
+          {
+            education.map((item, index) => (
+              <li class="flex sm:flex-row flex-col">
+                <Icon name={item.icon} class={`h-10 w-10 ${item.iconColor}`}/>
+                <div class="sm:ml-5 w-full max-sm:mt-1">
+                  <h3 class="md:text-2xl text-xl font-semibold !leading-tight">{item.degree}</h3>
+                  <div class="flex lg:flex-row md:flex-col sm:flex-row flex-col justify-between mb-4">
+                    <span class="md:text-xl text-lg mb-1 text-gray-800 dark:text-slate-200">{item.university}</span>
+                    <span class="flex flex-row items-center text-gray-600 dark:text-slate-400"><Icon name="ph:calendar-fill" class="h-4 w-4 mr-1"/>
+                      {item.dates}</span>
+                  </div>
+                  {index !== education.length - 1 && <hr class="my-5 border-gray-300 dark:border-slate-600 rounded-full"/>}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <section class=`${cardStyle} flex flex-col gap-y-10`>
+        <h2 class="text-3xl font-black font-serif gap-0 -mb-4">Hard Skills</h2>
+        {
+          skills.map((section, index) => (
+            <>
+              <section>
+                <h3 class="md:text-2xl text-1.5xl font-bold mb-2">{section.name}</h3>
+                <ul class="flex flex-col gap-y-7">
+                  {section.items.map((item, itemIndex) => (
+                    <li class="flex flex-col gap-y-5">
+                      <h4 class="font-semibold md:text-xl text-lg text-gray-800 dark:text-slate-200 flex flex-row items-center">
+                        {item.name} {item.icon.split(', ').map((icn) => (<Icon class="md:h-5 h-4 w-auto md:ml-3 ml-2" name={icn}/>))}
+                      </h4>
+                      <div class="w-full bg-gray-400 dark:bg-slate-600 rounded-full h-2">
+                        <div class={`bg-primary dark:bg-primary-500 h-2 w-[${item.percent}%] rounded-full text-end items-center flex flex-row place-content-end`}><span class="lg:mb-10 mb-9 md:text-lg font-semibold">{item.percent}%</span></div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+              {index !== skills.length - 1 && <hr class="-mb-3 border-gray-300 dark:border-slate-600 rounded-full" />}
+            </>
+          ))
+        }
+      </section>
+      <section id="certifications" class={cardStyle}>
+        <h2 class="text-3xl font-black font-serif mb-6">Certifications</h2>
+        <ul>
+          {
+            certifications.map((item, index) => (
+              <li class="flex sm:flex-row flex-col">
+                <Icon name={item.icon} class={`h-10 w-10 ${item.iconColor}`}/>
+                <div class="sm:ml-5 w-full max-sm:mt-1">
+                  <div class="flex items-center">
+                    <h3 class="md:text-2xl text-xl font-semibold mr-2 leading-tight">{item.certification}</h3>
+                    <a href={item.url} target="_blank" class="dark:hover:text-secondary-400 hover:text-secondary-700 transition duration-200 hover:bg-gray-200 dark:hover:bg-slate-600 p-1 rounded-lg"><Icon name="ph:link-bold" class="md:h-7 md:w-7 h-6 w-6"/></a>
+                  </div>
+                  <div class="flex lg:flex-row md:flex-col sm:flex-row flex-col justify-between mb-4">
+                    <span class="md:text-xl text-lg mb-1 text-gray-800 dark:text-slate-200">{item.issuer}</span>
+                    <span class="flex flex-row items-center text-gray-600 dark:text-slate-400"><Icon name="ph:calendar-fill" class="h-4 w-4 mr-1"/>
+                      {item.dates}</span>
+                  </div>
+                  {index !== certifications.length - 1 && <hr class="my-5 border-gray-300 dark:border-slate-600 rounded-full"/>}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>

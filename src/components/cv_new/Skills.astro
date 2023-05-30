@@ -1,0 +1,61 @@
+---
+
+const skillsList = [
+  {
+    name: "Programming Languages",
+    items: [
+      { name: "R", icon: "logos:r-lang", percent: 80 },
+      { name: "Python", icon: "logos:python", percent: 70 },
+      { name: "SQL", icon: "logos:snowflake, logos:mysql, logos:sqlite", percent: 60 },
+      { name: "HTML", icon: "logos:html-5", percent: 90 },
+      { name: "CSS", icon: "logos:css-3", percent: 85 },
+    ],
+  },
+  {
+    name: "Software",
+    items: [
+      { name: "HTML", icon: "ph:linkedin-logo-fill", percent: 90 },
+      { name: "CSS", icon: "ph:linkedin-logo-fill", percent: 85 },
+      { name: "React", icon: "ph:linkedin-logo-fill", percent: 75 },
+      { name: "Node.js", icon: "ph:linkedin-logo-fill", percent: 70 },
+    ],
+  },
+  {
+    name: "Database",
+    items: [
+      { name: "MySQL", icon: "ph:linkedin-logo-fill", percent: 80 },
+      { name: "MongoDB", icon: "ph:linkedin-logo-fill", percent: 70 },
+      { name: "PostgreSQL", icon: "ph:linkedin-logo-fill", percent: 65 },
+    ],
+  },
+];
+
+import {Icon} from "astro-icon";
+---
+
+
+<section class=`${cardStyle} flex flex-col gap-y-10`>
+  <h2 class="text-3xl font-black font-serif gap-0 -mb-4">Hard Skills</h2>
+  {
+    skills.map((section, index) => (
+      <>
+        <section>
+          <h3 class="md:text-2xl text-xl font-bold mb-2">{section.name}</h3>
+          <ul class="flex flex-col gap-y-7">
+            {section.items.map((item, itemIndex) => (
+              <li class="flex flex-col gap-y-2">
+                <h4 class="font-semibold md:text-xl text-lg text-gray-800 dark:text-slate-200 flex flex-row items-center">
+                  {item.name} {item.icon.split(', ').map((icn) => (<Icon class="h-5 w-auto ml-3" name={icn}/>))}
+                </h4>
+                <div class="w-full bg-gray-400 dark:bg-slate-600 rounded-full h-2">
+                  <div class={`bg-primary dark:bg-primary-500 h-2 w-[${item.percent}%] rounded-full text-end items-center flex flex-row place-content-end`}><span class="mb-10 md:text-lg font-semibold">{item.percent}%</span></div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+        {index !== skills.length - 1 && <hr class="border-gray-300 dark:border-slate-600 rounded-full" />}
+      </>
+    ))
+  }
+</section>
