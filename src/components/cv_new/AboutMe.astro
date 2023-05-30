@@ -141,7 +141,7 @@ const cardStyle = "bg-white dark:bg-slate-800 border border-transparent dark:bor
                         {item.name} {item.icon.split(', ').map((icn) => (<Icon class="md:h-5 h-4 w-auto md:ml-3 ml-2" name={icn}/>))}
                       </h4>
                       <div class="w-full bg-gray-400 dark:bg-slate-600 rounded-full h-2">
-                        <div class={`bg-primary dark:bg-primary-500 h-2 w-[${item.percent}%] rounded-full text-end items-center flex flex-row place-content-end`}><span class="lg:mb-10 mb-9 md:text-lg font-semibold">{item.percent}%</span></div>
+                        <div class={`bg-primary dark:bg-primary-500 h-2 w-[${item.percent}%] rounded-full text-end items-center flex flex-row place-content-end`}><span class="mb-9 font-semibold">{item.percent}%</span></div>
                       </div>
                     </li>
                   ))}
