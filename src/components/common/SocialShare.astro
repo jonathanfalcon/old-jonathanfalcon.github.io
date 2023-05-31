@@ -8,38 +8,55 @@ export interface Props {
 }
 
 const { text, url, class: className = 'inline-block' } = Astro.props;
+
+const utmLinks = {
+  facebook: encodeURIComponent('?utm_source=facebook&utm_medium=social'),
+  twitter: encodeURIComponent('?utm_source=twitter&utm_medium=social'),
+  linkedin: encodeURIComponent('?utm_source=linkedin&utm_medium=social'),
+  sms: encodeURIComponent('?utm_source=sms&utm_medium=shared'),
+  email: encodeURIComponent('?utm_source=email&utm_medium=shared')
+};
+
+const urlLink = {
+  facebook: `https://www.facebook.com/sharer.php?u=${url+utmLinks['facebook']}`,
+  twitter: `https://twitter.com/intent/tweet?url=${url+utmLinks['twitter']}&text=${text}`,
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url+utmLinks['linkedin']}`,
+  sms: `sms:&body=${url+utmLinks['sms']}`,
+  email: `mailto:?subject=%22${text}%22&body=${text}%20${url+utmLinks['email']}`,
+};
+
 ---
 
-<div class=`text-gray-500 dark:text-slate-400 ${className}`>
-  <span>Share:</span>
-  <button title="Share with Messages" data-aw-social-share="sms" data-aw-url={url} data-aw-text={text}
-  ><Icon
+<div class=`text-gray-600 dark:text-slate-300 ${className}`>
+  <span class="mr-1">Share:</span>
+  <a title="Share with Messages" aria-label="Share with Messages" href={urlLink.sms} target="_blank" rel="noopener">
+    <Icon
     name="mdi:chat"
-    class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
-  />
-  </button>
-  <button title="Share with Email" data-aw-social-share="email" data-aw-url={url} data-aw-text={text}
-  ><Icon
+    class="w-10 h-10 p-1.5 hover:text-primary-700 dark:hover:text-primary-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 duration-200 transition rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600"
+    />
+  </a>
+  <a title="Share with Email" aria-label="Share with Email" href={urlLink.email} target="_blank" rel="noopener">
+    <Icon
     name="mdi:email"
-    class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
-  />
-  </button>
-  <button title="Share to LinkedIn" data-aw-social-share="linkedin" data-aw-url={url} data-aw-text={text}
-  ><Icon
+    class="w-10 h-10 p-1.5 hover:text-primary-700 dark:hover:text-primary-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 duration-200 transition rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600"
+    />
+  </a>
+  <a title="Share to LinkedIn" aria-label="Share to LinkedIn" href={urlLink.linkedin} target="_blank" rel="noopener">
+    <Icon
     name="mdi:linkedin"
-    class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
-  />
-  </button>
-  <button title="Share to Twitter" data-aw-social-share="twitter" data-aw-url={url} data-aw-text={text}
-    ><Icon
+    class="w-10 h-10 p-1.5 hover:text-primary-700 dark:hover:text-primary-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 duration-200 transition rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600"
+    />
+  </a>
+  <a title="Share to Twitter" aria-label="Share to Twitter" href={urlLink.twitter} target="_blank" rel="noopener">
+    <Icon
       name="mdi:twitter"
-      class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
+      class="w-10 h-10 p-1.5 hover:text-primary-700 dark:hover:text-primary-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 duration-200 transition rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600"
     />
-  </button>
-  <button title="Share to Facebook" data-aw-social-share="facebook" data-aw-url={url}
-    ><Icon
+  </a>
+  <a title="Share to Facebook" aria-label="Share to Facebook" href={urlLink.facebook} target="_blank" rel="noopener">
+    <Icon
       name="mdi:facebook-box"
-      class="w-6 h-6 hover:text-slate dark:hover:text-white transition duration-200 hover:scale-125 transform-gpu"
+      class="w-10 h-10 p-1.5 hover:text-primary-700 dark:hover:text-primary-400 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-slate-700 duration-200 transition rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600"
     />
-  </button>
+  </a>
 </div>
