@@ -1,0 +1,49 @@
+---
+const {id, title, data, width, height} = Astro.props;
+
+const file = JSON.stringify(data);
+
+---
+<figure>
+  <canvas id={id} class="w-full h-full bg-slate-800 rounded-lg md:p-8 p-6 aspect-[16/10]" />
+  <figcaption class="text-right">{title}</figcaption>
+</figure>
+
+<script is:inline set:html={`
+  const ${id} = document.getElementById('${id}');
+  
+  Chart.defaults.font.family = "proxima-nova, sans-serif";
+  Chart.defaults.font.size = 16;
+  Chart.defaults.backgroundColor = '#358257';
+  Chart.defaults.color = '#f7fbff';
+
+  new Chart(${id}, {
+    type: 'bar',
+    data: {
+      datasets: [{
+        data: ${file},
+        parsing: {
+          xAxisKey: "x",
+          yAxisKey: "y"
+    }
+      }]
+    },
+    options: {
+      aspectRatio: 16/10,
+      scales: {
+        x: {
+          grid: {display: false, borderColor: "#626a83", borderWidth: 3},
+        },
+        y: {
+          beginAtZero: true,
+          grid: {display: false, borderColor: "#626a83", borderWidth: 3},
+        },
+      },
+      plugins: {
+            legend: {
+                display: false
+            }
+        }
+    }
+  });
+`}/>

@@ -77,6 +77,7 @@ export default defineConfig({
       alias: {
         '~': path.resolve(__dirname, './src'),
         'postImages': path.resolve(__dirname, './src/assets/images/posts'),
+        'postJson': path.resolve(__dirname, './src/assets/json/posts')
       },
     },
   },

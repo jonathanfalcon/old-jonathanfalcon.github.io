@@ -10,7 +10,16 @@ tags:
 ---
 
 import { Icon } from 'astro-icon';
-import Table from '~/components/blog/Table.astro';
+import Histogram from '~/components/charts/Histogram.astro'
+
+import Sales from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_sales.json"
+import LogSales from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_logSales.json"
+import BottleCost from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_bottleCost.json"
+import LogBottleCost from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_logBottleCost.json"
+import BottleRetail from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_bottleRetail.json"
+import LogBottleRetail from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_logBottleRetail.json"
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js" integrity="sha512-d6nObkPJgV791iTGuBoVC9Aa2iecqzJRE0Jiqvk85BhLHAPhWqkuBiQb1xz2jvuHNqHLYoN3ymPfpiB1o+Zgpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 # Background
 
@@ -20,7 +29,7 @@ This data is taken from the State of Iowa's publicly available data website. It 
 The data I'll be working with is the following:
 
 | Original Column Name | New Column Name | Description                                                                          |
-|:----------------|:----------------|:-------------------------------------|
+|:---------------------|:----------------|:-------------------------------------------------------------------------------------|
 | Date                 | `date`          | Date of order                                                                        |
 | County               | `county`        | County where the store who ordered the liquor is located                             |
 | City                 | `city`          | City where the store who ordered the liquor is located                               |
@@ -37,7 +46,7 @@ The data I'll be working with is the following:
 
 ## Loading the Required Libraries
 
-These two libraries are required to better work with the data.
+These two packages are required to better work with the data.
 
 ```r
 library(tidyverse)
@@ -62,9 +71,13 @@ selectedVars <- c(date = "Date",
                   sales = "Sale (Dollars)")
 ```
 
-Next, we read in the dataset using a `readr` function and pass it using a pipe `%>%` to a `dplyr` function to sample a fraction of the dataset, as working with a 6 *gigabyte* file is needlessly time-consuming. This function samples 25% of the available data.
+Before we sample the data, we set the seed to ensure reproducibility, otherwise the results of the analysis would differ each run despite the code being identical. In this instance, I used the due date as the seed.
+
+After setting the seed, we read in the dataset using a readr function and pass it using a pipe `%>%` to a dplyr function to sample a fraction of the dataset, as working with a 6 *gigabyte* file is needlessly time-consuming. This function samples 25% of the available data.
 
 ```r
+set.seed(11282022)
+
 liquorSales <- read_delim("./Data/Iowa_Liquor_Sales_Sample.tsv",
                           col_select = all_of(selectedVars),
                           col_types = cols("Zip Code" = "c",
@@ -132,7 +145,7 @@ liquorSales %>%
   arrange(desc(n))
 ```
 
-Using the above
+Using the above, we come up with these categories and assigned items.
 
 ```r
 vodka <- "(VODKA|BURNETTS|VAN GOGH|DEEP EDDY|GREY GOOSE|SKYY|PINNACLE|SMIRNOFF|ABSOLUT|SVEDKA|STOLICHNAYA|PEARL|360 |FOREX|BELVEDERE|BURNETT'S|CIROC|KETEL ONE|NEW AMSTERDAM|PRIDE OF THE WAPSI|SOBIESKI|THREE OLIVES|TWENTY GRAND GOLD)"
@@ -149,5 +162,129 @@ beer <- "(BEER)"
 misc <- "(SPECIAL|AMERICAN ALCOHOL|DESLISTED|HOLIDAY|IOWA|EGG NOG|SANGRIA|BARREL BUFFALO BILL|LA COLLECTION)"
 ```
 
+After, we use another `for` loop to assign those categories. This time, the loop iterates over every row in `liquorSales`. To prevent the operation from overwriting whole data or running on observations with a missing `item`, a conditional is applied that checks if `category` is NA *and* if `item` is not NA. Then, the waterfall of `if` and `else if` statements checks if a match is found and assigns a `category` if there is a match. If no match is found for the first category, it checks the next category and so on.
+
+```r
+for (x in 1:nrow(liquorSales)) {
+  if (is.na(liquorSales$category[x]) && !is.na(liquorSales$item[x])) {
+    if (str_detect(liquorSales$item[x], vodka)) {
+      liquorSales$category[x] <- "Vodka"
+    } else if (str_detect(liquorSales$item[x], schnapps)) {
+      liquorSales$category[x] <- "Schnapps"
+    } else if (str_detect(liquorSales$item[x], rum)) {
+      liquorSales$category[x] <- "Rum"
+    } else if (str_detect(liquorSales$item[x], tequila)) {
+      liquorSales$category[x] <- "Tequila"
+    } else if (str_detect(liquorSales$item[x], gin)) {
+      liquorSales$category[x] <- "Gin"
+    } else if (str_detect(liquorSales$item[x], whiskey_whisky)) {
+      liquorSales$category[x] <- "Whiskey"
+    } else if (str_detect(liquorSales$item[x], brandy)) {
+      liquorSales$category[x] <- "Brandy"
+    } else if (str_detect(liquorSales$item[x], liqueur_cordial)) {
+      liquorSales$category[x] <- "Liqueur/Cordial"
+    } else if (str_detect(liquorSales$item[x], spirit)) {
+      liquorSales$category[x] <- "Spirit"
+    } else if (str_detect(liquorSales$item[x], cocktail)) {
+      liquorSales$category[x] <- "Cocktail"
+    } else if (str_detect(liquorSales$item[x], beer)) {
+      liquorSales$category[x] <- "Beer"
+    } else if (str_detect(liquorSales$item[x], misc)) {
+      liquorSales$category[x] <- "Misc"
+    } 
+  }
+}
+```
 
 
+# Exploratory Analysis
+
+## Histograms
+
+To make it convenient, we first create a custom function that creates a histogram of a chosen variable using the ggplot2 package's `geom_histogram()` function.
+
+```r
+hist <- function(var = sales, binwidth = NULL, bins = NULL) {
+  liquorSales %>%
+    ggplot(aes(x = {{var}})) +
+    geom_histogram(binwidth = {{binwidth}}, bins = {{bins}})
+}
+```
+
+### Sales: `sales`
+
+```r
+hist(sales)
+```
+
+<Histogram id="sales" title="Histogram of Sales" data={Sales} />
+
+Here, we see a positively skewed distribution. 90% of the values for `sales` are less than or equal to \$256.44, while the maximum value is \$181,962.00. Taking the natural log of `sales` _should_ reveal a distribution that appears more normal.
+
+```r
+hist(log(sales))
+```
+
+<Histogram id="log_sales" title="Histogram of Log Sales" data={LogSales} />
+
+As predicted, the histogram of the natural log of `sales` does show a distribution that appears more normal.
+
+### State Bottle Cost: `bottleCost`
+
+```r
+hist(bottleCost)
+```
+
+<Histogram id="bottleCost" title="Histogram of Bottle Cost" data={BottleCost} />
+
+Here, we see another positively skewed distribution. 90% of the values for `bottleCost` are less than or equal to \$18.49, while the maximum value is \$549.99. Taking the natural log of `bottleCost` _should_ again reveal a distribution that appears more normal.
+
+
+```r
+hist(log(bottleCost))
+```
+
+<Histogram id="log_bottleCost" title="Histogram of Log Bottle Cost" data={LogBottleCost} />
+
+As with `sales`, the histogram of the natural log of `bottleCost` indeed shows a distribution that appears more normal.
+
+### Retail Bottle Cost: `bottleRetail`
+
+```r
+hist(bottleRetail)
+```
+
+<Histogram id="bottleRetail" title="Histogram of Bottle Retail" data={BottleRetail} />
+
+Here, we see another positively skewed distribution. 90% of the values for `bottleRetail` are less than or equal to \$27.74, while the maximum value is \$824.99. Taking the natural log of `bottleRetail` _should_ again reveal a distribution that appears more normal.
+
+
+```r
+hist(log(bottleRetail))
+```
+
+<Histogram id="log_bottleRetail" title="Histogram of Log Bottle Retail" data={LogBottleRetail} />
+
+As with the prior two columns, the histogram of the natural log of `bottleRetail` indeed shows a distribution that appears more normal.
+
+
+
+## Most Popular Category of Alcohol by Weekday
+
+To do this, we first need to know what day of the week each date is. We use the `weekdays()` function from the lubridate package and create a new column appropriately named `weekday`.
+
+```r
+liquorSales <- liquorSales %>%
+  mutate(weekday = weekdays(date))
+```
+
+Next, we use the `summarise()` function after grouping by `category` and `weekday` to count the number of observations by both category and weekday. After counting, we ungroup to ensure no errors in the future. We then group again by `weekday` and use the `slice_max()` function to take the top row in each weekday group.
+
+```r
+liquorSales %>%
+  group_by(weekday, category) %>%
+  summarise(category_count = n()) %>%
+  ungroup() %>%
+  group_by(weekday) %>%
+  slice_max(order_by = category_count)
+```
