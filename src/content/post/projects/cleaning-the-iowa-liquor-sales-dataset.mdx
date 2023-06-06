@@ -9,7 +9,7 @@ tags:
   - R
 ---
 
-import { Icon } from 'astro-icon';
+import {FiraCode, ChartJS} from '~/components/common/External.astro'
 import Histogram from '~/components/charts/Histogram.astro'
 
 import Sales from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_sales.json"
@@ -19,7 +19,8 @@ import LogBottleCost from "postJson/cleaning-the-iowa-liquor-sales-dataset/histo
 import BottleRetail from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_bottleRetail.json"
 import LogBottleRetail from "postJson/cleaning-the-iowa-liquor-sales-dataset/histogram_logBottleRetail.json"
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.js" integrity="sha512-d6nObkPJgV791iTGuBoVC9Aa2iecqzJRE0Jiqvk85BhLHAPhWqkuBiQb1xz2jvuHNqHLYoN3ymPfpiB1o+Zgpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<FiraCode />
+<ChartJS />
 
 # Background
 
