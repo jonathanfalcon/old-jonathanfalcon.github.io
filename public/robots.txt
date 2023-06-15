@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /chart
+Disallow:
 
 Sitemap: https://jonathanfalcon.com/sitemap-index.xml
