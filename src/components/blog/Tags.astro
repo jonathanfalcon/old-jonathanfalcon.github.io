@@ -16,7 +16,7 @@ const { tags, class: className = 'text-base' } = Astro.props;
   tags && Array.isArray(tags) && (
     <ul class={className}>
       {tags.map((tag) => (
-        <li class="inline-block mr-2 mb-2 lowercase">
+        <li class="inline-block mr-2 mb-2">
           {BLOG?.tag?.disabled ? (
             tag
           ) : (

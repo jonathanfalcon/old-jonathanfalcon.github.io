@@ -17,7 +17,7 @@ const BASE_PATHNAME = SITE.basePathname;
 export const cleanSlug = (text = '') =>
   trimSlash(text)
     .split('/')
-    .map((slug) => slugify(slug))
+    .map((slug) => slugify(slug, {maintainCase: true}))
     .join('/');
 
 export const POST_PERMALINK_PATTERN = trimSlash(BLOG?.post?.permalink || '/%slug%');
@@ -39,7 +39,7 @@ export const getPermalink = (slug = '', type = 'page'): string => {
       break;
 
     case 'tag':
-      permalink = createPath(TAG_BASE, trimSlash(slug));
+      permalink = createPath(TAG_BASE, trimSlash(slug.toLowerCase()));
       break;
 
     case 'post':
