@@ -12,10 +12,10 @@ export interface Props {
   meta?: MetaSEO;
 }
 
-const { meta } = Astro.props;
+const { meta, bg } = Astro.props;
 ---
 
-<Layout {meta}>
+<Layout {meta} {bg}>
   <slot name="header">
     <Header {...headerData} position="right" showToggleTheme="true" />
   </slot>

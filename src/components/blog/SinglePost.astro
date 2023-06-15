@@ -54,79 +54,77 @@ let proseStyle = `${baseStyle} ${tableStyle} ${linkStyle} ${imageStyle} ${preSty
 //proseStyle = `max-w-4xl mx-auto px-4 prose md:prose-xl dark:prose-invert`;
 ---
 
-<section class="!py-20 md:!py-24 mx-auto">
-  <article>
-    <header class={post.image ? '' : ''}>
-      <div class="flex justify-between flex-col sm:flex-row max-w-4xl mx-auto mt-0 mb-2 px-4 sm:items-center">
-        <p class="text-gray-700 dark:text-gray-300">
-          <Icon name="mdi:calendar-month" class="w-4 h-4 inline-block -mt-0.5" />
-          <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
-          {
-            post.category && (
-              <>
-                {' '}
-                –{' '}
-                <a class="capitalize text-primary-700 dark:text-primary-400 hover:underline" href={getPermalink(post.category, 'category')}>
-                  {post.category.replaceAll('-', ' ')}
-                </a>
-              </>
-            )
-          }
-          {post.readingTime && <> – {post.readingTime} min read</>}
-        </p>
-      </div>
-      <h1
-        class="px-4 max-w-4xl mx-auto text-4xl md:text-6xl font-bold font-serif"
-      >
-        {post.title}
-      </h1>
-      <p
-        class="max-w-4xl mx-auto mt-4 mb-8 px-4 text-xl leading-snug md:text-2xl text-gray-800 dark:text-slate-300"
-      >
-        {post.description}
+<article class="!py-20 md:!py-24 mx-auto">
+  <header class={post.image ? '' : ''}>
+    <div class="flex justify-between flex-col sm:flex-row max-w-4xl mx-auto mt-0 mb-2 px-4 sm:items-center">
+      <p class="text-gray-700 dark:text-gray-300">
+        <Icon name="mdi:calendar-month" class="w-4 h-4 inline-block -mt-0.5" />
+        <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
+        {
+          post.category && (
+            <>
+              {' '}
+              –{' '}
+              <a class="capitalize text-primary-700 dark:text-primary-400 hover:underline" href={getPermalink(post.category, 'category')}>
+                {post.category.replaceAll('-', ' ')}
+              </a>
+            </>
+          )
+        }
+        {post.readingTime && <> – {post.readingTime} min read</>}
       </p>
-
-      {
-        post.image ? (
-          <Picture
-            src={post.image}
-            class="max-w-full lg:max-w-4xl mx-auto md:mb-14 mb-6 min-[900px]:rounded-3xl bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900, 1400, 2000, 3000]}
-            sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, (max-width: 2000px) 1400px, (max-width: 3000px) 2000px, 3000px"
-            alt={post.title}
-            loading="eager"
-            aspectRatio={16 / 9}
-            width={896}
-            height={504}
-            format="webp"
-            loading="eager"
-            decoding="async"
-            background={undefined}
-          />
-        ) : (
-          <div class="max-w-3xl mx-auto px-4 sm:px-6">
-            <div class="border-t dark:border-slate-700" />
-          </div>
-        )
-      }
-    </header>
-    <div
-      class={proseStyle}
+    </div>
+    <h1
+      class="px-4 max-w-4xl mx-auto text-4xl md:text-6xl font-bold font-serif"
     >
-      {
-        post.Content ? (
-          <>
-            {/* @ts-ignore */}
-            <post.Content />
-          </>
-        ) : (
-          <Fragment set:html={post.content} />
-        )
-      }
-    </div>
-    <div class="mx-auto px-6 sm:px-6 max-w-4xl mt-8 flex justify-between flex-col sm:flex-row">
-      <PostTags tags={post.tags} class="mr-5" />
-      <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 flex flex-row gap-1 items-center" />
-    </div>
-  </article>
-</section>
+      {post.title}
+    </h1>
+    <p
+      class="max-w-4xl mx-auto mt-4 mb-8 px-4 text-xl leading-snug md:text-2xl text-gray-800 dark:text-slate-300"
+    >
+      {post.description}
+    </p>
+
+    {
+      post.image ? (
+        <Picture
+          src={post.image}
+          class="max-w-full lg:max-w-4xl mx-auto md:mb-14 mb-6 min-[900px]:rounded-3xl bg-gray-400 dark:bg-slate-700"
+          widths={[400, 900, 1400, 2000, 3000]}
+          sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, (max-width: 2000px) 1400px, (max-width: 3000px) 2000px, 3000px"
+          alt={post.title}
+          loading="eager"
+          aspectRatio={16 / 9}
+          width={896}
+          height={504}
+          format="webp"
+          loading="eager"
+          decoding="async"
+          background={undefined}
+        />
+      ) : (
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+          <div class="border-t dark:border-slate-700" />
+        </div>
+      )
+    }
+  </header>
+  <div
+    class={proseStyle}
+  >
+    {
+      post.Content ? (
+        <>
+          {/* @ts-ignore */}
+          <post.Content />
+        </>
+      ) : (
+        <Fragment set:html={post.content} />
+      )
+    }
+  </div>
+  <div class="mx-auto px-6 sm:px-6 max-w-4xl mt-8 flex justify-between flex-col sm:flex-row">
+    <PostTags tags={post.tags} class="mr-5" />
+    <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 flex flex-row gap-1 items-center" />
+  </div>
+</article>

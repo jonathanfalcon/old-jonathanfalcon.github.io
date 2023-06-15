@@ -13,7 +13,7 @@ export interface Props {
   meta?: MetaSEO;
 }
 
-const { meta = {} } = Astro.props;
+const { meta = {}, bg = "bg-white dark:bg-slate" } = Astro.props;
 const { language = 'en', textDirection = 'ltr' } = SITE;
 ---
 
@@ -25,7 +25,7 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
     <MetaTags {...meta} />
   </head>
 
-  <body class="subpixel-antialiased text-slate bg-white dark:text-slate-50 dark:bg-slate">
+  <body class=`subpixel-antialiased text-slate dark:text-slate-50 ${bg}`>
   <!--<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSF8HHP"
                     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>-->
     <slot />
