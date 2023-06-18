@@ -15,11 +15,11 @@ module.exports = {
   theme: {
     extend: {
       minHeight: {
-        'small-screen-minus-nav': ['calc(100vh - 60px) /* fallback */', 'calc(100svh - 60px)'],
+        'small-screen-minus-nav': ['calc(100vh - 56px) /* fallback */', 'calc(100svh - 56px)'],
         'small-screen': ['100vh /* fallback */', '100svh'],
       },
       height: {
-        'dynamic-screen-minus-nav': ['calc(100vh - 60px) /* fallback */', 'calc(100dvh - 60px)'],
+        'dynamic-screen-minus-nav': ['calc(100vh - 56px) /* fallback */', 'calc(100dvh - 56px)'],
         'dynamic-screen': ['100vh /* fallback */', '100dvh'],
         '13': '3.25rem',
       },

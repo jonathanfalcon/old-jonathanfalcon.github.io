@@ -37,7 +37,7 @@
 }
 
 main > :first-child {
-  @apply pt-[60px];
+  @apply md:pt-[60px] pt-[56px];
 }
 
 [astro-icon].icon-light > * {
