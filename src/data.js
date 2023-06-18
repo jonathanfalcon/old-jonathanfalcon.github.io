@@ -27,25 +27,21 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      links: [
-        { text: 'Home', href: '/' }
-      ],
+      text: 'Home',
+      href: '/',
     },
     {
-      links: [
-          { text: 'Work', href: getBlogPermalink() }
-      ],
+      text: 'Work',
+      href: getBlogPermalink(),
     },
     {
-      links: [
-        { text: 'Resume', href: '/resume/' }
-      ],
+      text: 'Resume',
+      href: '/resume/',
     },
     {
-      links: [
-        { text: 'Contact', href: '/contact/' }
-      ],
-    },
+      text: 'Contact',
+      href: '/contact/',
+    }
   ],
   /*secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms') },
