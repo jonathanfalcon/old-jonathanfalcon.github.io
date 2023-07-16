@@ -1,5 +1,6 @@
 ---
 import { Picture } from "@astrojs/image/components";
+import blurHashImage from '../../utils/blur';
 const {src, aspectRatio = '16:9', alt} = Astro.props;
 
 ---
@@ -8,5 +9,6 @@ const {src, aspectRatio = '16:9', alt} = Astro.props;
          aspectRatio={aspectRatio}
          format="webp"
          alt={alt}
-         style={`aspect-ratio: ${aspectRatio.replace(':', '/')};`}
+         class={`bg-cover`}
+         style={`aspect-ratio: ${aspectRatio.replace(':', '/')}; background-image: url(${await blurHashImage(src.src)});`}
 />
