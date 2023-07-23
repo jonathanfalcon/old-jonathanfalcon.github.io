@@ -37,7 +37,7 @@ import { SITE } from '~/config.mjs';
 
     attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
       elem.classList.toggle('expanded');
-      document.body.classList.toggle('overflow-hidden');
+      document.body.classList.toggle('max-md:overflow-hidden');
       document.querySelector('#header #menu')?.classList.toggle('h-dynamic-screen-minus-nav');
       document.querySelector('#header #menu')?.classList.toggle('opacity-100');
       const header = document.getElementById('header');
