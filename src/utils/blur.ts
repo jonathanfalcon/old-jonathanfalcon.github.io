@@ -1,53 +1,84 @@
-import * as fs from 'node:fs/promises'
-import * as codecs from '@astropub/codecs'
-import {decode} from 'blurhash'
+import sharp from 'sharp'
+import {decode, encode} from 'blurhash'
 import path from 'path'
 
+interface BlurHashData {
+  data: Uint8ClampedArray,
+  width: number,
+  height: number,
+  hash: string,
+}
 
+export default async function blurHashImage(imagePath: string, adjustedWidth: number = 20): Promise<string | undefined> {
+  const processImage = async (): Promise<BlurHashData | undefined> => {
+    try {
+      const URL = path.resolve(
+        path.join(
+          import.meta.env.PROD ? './dist' : '.',
+          imagePath.substring(imagePath.indexOf('/src'))
+        )
+      )
+      
+      const image = sharp(URL).resize(adjustedWidth)
 
-export default async function blurHashImage(imagePath: string) {
-  try {
-    let intermediate
-    if (import.meta.env.PROD) {
-      intermediate = "./dist"
-    } else {
-      intermediate = "."
+      const [imageBuffer, { height, width }] = await Promise.all([
+        image.raw().ensureAlpha().toBuffer(),
+        image.metadata()
+      ])
+
+      if (!height || !width) {
+        const undefinedDims = []
+
+        if (!height) {
+          undefinedDims.push('height')
+        }
+        if (!width) {
+          undefinedDims.push('width')
+        }
+
+        console.warn(`Image ${undefinedDims.join(' and ')} ${undefinedDims.length > 1 ? 'are' : 'is'} undefined. Unable to construct blurHashData object.`)
+        return
+      }
+      
+      return {
+        data: new Uint8ClampedArray(imageBuffer),
+        width: adjustedWidth,
+        height: Math.round(adjustedWidth * (height / width)),
+        hash: '',
+      }
+      
+    } catch (error) {
+      console.error('Error processing image:', error)
+      return
     }
-
-    const startIndex = imagePath.indexOf("/src");
-    const resultString = intermediate + imagePath.substring(startIndex);
-
-    const URL = await path.resolve(resultString)
-
-    const image = await codecs.load(await fs.readFile(URL));
-
-    const decoded = await image.decode();
-
-    const resized = await codecs.resize(decoded, { width: 600 });
-
-    const blurHashData = await resized.blurhash({ width: 32 });
-
-    const dataURL = await blurHashToDataURL(blurHashData);
-
-    return dataURL;
+  }
+  
+  const blurHashToDataURL = (blurHashData: BlurHashData): string | undefined => {
+    if (blurHashData) {
+      const pixels = decode(blurHashData.hash, blurHashData.width, blurHashData.height)
+      return parsePixels(pixels, blurHashData.width, blurHashData.height)
+    } else {
+      return
+    }
+  }
+  
+  try {    
+    const blurHashData = await processImage()
+    
+    if (!blurHashData) {
+      console.warn('blurHashData is undefined. Unable to calculate blur hash.')
+      return
+    }
+    
+    blurHashData.hash = encode(blurHashData.data, blurHashData.width, blurHashData.height, 4, 4)
+    
+    return `background: center / cover url(${blurHashToDataURL(blurHashData)});`
   } catch (error) {
-    console.error("An error occurred:", error);
-    return null;
+    console.error('Error creating blurhash:', error)
+    return
   }
 }
 
-async function blurHashToDataURL(blurHashData: { 
-  data: Uint8ClampedArray;
-  width: number;
-  height: number;
-  hash: string;
-}) {
-  if (!blurHashData) return undefined
-
-  const pixels = decode(blurHashData.hash, blurHashData.width, blurHashData.height)
-  const dataURL = parsePixels(pixels, blurHashData.width, blurHashData.height)
-  return dataURL
-}
 
 // thanks to https://github.com/wheany/js-png-encoder
 function parsePixels(pixels: Uint8ClampedArray, width: number, height: number) {
@@ -56,7 +87,7 @@ function parsePixels(pixels: Uint8ClampedArray, width: number, height: number) {
   const dataURL = typeof Buffer !== "undefined"
     ? Buffer.from(getPngArray(pngString)).toString("base64")
     : btoa(pngString)
-  return "data:image/png;base64," + dataURL
+  return `data:image/png;base64,${dataURL}`
 }
 
 function getPngArray(pngString: string) {
