@@ -4,6 +4,7 @@ import { Picture } from '@astrojs/image/components';
 
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
+import {proseStyle} from './ProseStyles'
 
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
@@ -16,10 +17,6 @@ export interface Props {
 }
 
 const { post, url } = Astro.props;
-
-import {proseStyle} from './ProseStyles'
-
-//proseStyle = `max-w-4xl mx-auto px-4 prose md:prose-xl dark:prose-invert`;
 ---
 
 <article class="!py-20 md:!py-24 mx-auto">
