@@ -10,6 +10,7 @@ import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
 
 import type { Post } from '~/types';
+import blurHashImage from '~/utils/blur'
 
 export interface Props {
   post: Post;
@@ -58,14 +59,13 @@ const { post, url } = Astro.props;
           widths={[400, 900, 1400, 2000, 3000]}
           sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, (max-width: 2000px) 1400px, (max-width: 3000px) 2000px, 3000px"
           alt={post.title}
-          loading="eager"
+          loading="lazy"
           aspectRatio={16 / 9}
           width={896}
           height={504}
+          style={await blurHashImage(post.image.src)}
           format="webp"
-          loading="eager"
           decoding="async"
-          background={undefined}
         />
       ) : (
         <div class="max-w-3xl mx-auto px-4 sm:px-6">
