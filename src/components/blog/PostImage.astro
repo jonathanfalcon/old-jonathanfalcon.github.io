@@ -7,7 +7,6 @@ const {src, aspectRatio = '16:9', alt} = Astro.props;
 <Picture src={src}
          widths={[900, 1400, 2000]}
          aspectRatio={aspectRatio}
-         format="webp"
          alt={alt}
          style={`aspect-ratio: ${aspectRatio.replace(':', '/')}; ${await blurHashImage(src.src)}`}
 />

@@ -32,8 +32,7 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
               sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, 1400px"
               alt={post.title}
               aspectRatio="16:9"
-              format="webp"
-              loading="lazy"
+                loading="lazy"
               decoding="async"
               style={await blurHashImage(image.src)}
             />

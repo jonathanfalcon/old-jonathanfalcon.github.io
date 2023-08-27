@@ -54,7 +54,7 @@ const {src} = await findImage(image.src)
                   loading="eager"
                   width={600}
                   height={900}
-                  format="webp"
+                  formats={['webp']}
                   style={await blurHashImage(src)}
                 />
               )}
