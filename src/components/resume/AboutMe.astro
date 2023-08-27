@@ -9,55 +9,8 @@ const cardStyle = "bg-white dark:bg-slate-800 border border-transparent dark:bor
 
 ---
 
-<style>
-  .w-\[0\%\] {
-    width: 0%;
-  }
 
-  .w-\[10\%\] {
-    width: 10%;
-  }
-
-  .w-\[20\%\] {
-    width: 20%;
-  }
-
-  .w-\[30\%\] {
-    width: 30%;
-  }
-
-  .w-\[40\%\] {
-    width: 40%;
-  }
-  
-  .w-\[50\%\] {
-    width: 50%;
-  }
-
-  .w-\[60\%\] {
-    width: 60%;
-  }
-
-  .w-\[70\%\] {
-    width: 70%;
-  }
-
-  .w-\[80\%\] {
-    width: 80%;
-  }
-
-  .w-\[90\%\] {
-    width: 90%;
-  }
-
-  .w-\[100\%\] {
-    width: 100%;
-  }
-
-</style>
-
-
-<div class="flex md:flex-row flex-col lg:gap-10 gap-5 max-w-[88rem] mx-auto pb-16 !pt-[calc(1.25rem+60px)] px-4">
+<div class="flex md:flex-row flex-col lg:gap-10 gap-5 max-w-[88rem] mx-auto pb-16 md:!pt-[calc(2.25rem+60px)] !pt-[calc(1.25rem+60px)] px-4">
   <section class=`${cardStyle} md:basis-2/5 md:sticky h-fit md:top-20`>
     <div class="flex flex-col sm:flex-row md:flex-col xl:flex-row text-center sm:text-left md:text-center xl:text-left mb-3 sm:mb-6 md:mb-3 xl:mb-6 gap-x-10 gap-y-2">
       <Picture
@@ -142,7 +95,7 @@ const cardStyle = "bg-white dark:bg-slate-800 border border-transparent dark:bor
                       {item.name} {item.icon.split(', ').map((icn) => (<Icon class="md:h-5 h-4 w-auto md:ml-3 ml-2" name={icn}/>))}
                     </h4>
                     <div class="w-full bg-gray-400 dark:bg-slate-600 rounded-full h-2">
-                      <div class={`bg-primary dark:bg-primary-500 h-2 w-[${item.percent}%] rounded-full text-end items-center flex flex-row place-content-end`}><span class="mb-9 font-semibold">{item.percent}%</span></div>
+                      <div class={`bg-primary dark:bg-primary-500 h-2 rounded-full text-end items-center flex flex-row place-content-end`} style=`width: ${item.percent}%;`><span class="mb-9 font-semibold">{item.percent}%</span></div>
                     </div>
                   </li>
                 ))}
