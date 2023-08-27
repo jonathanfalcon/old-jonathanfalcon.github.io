@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
 import blurHashImage from '../../utils/blur'
+import {findImage} from '../../utils/images'
 
 interface CallToAction {
   text: string;
@@ -30,6 +31,7 @@ const {
   callToAction2 = await Astro.slots.render('callToAction2'),
   image = await Astro.slots.render('image'),
 } = Astro.props;
+const {src} = await findImage(image.src)
 ---
 
 <section class="relative dark:bg-resume-dark bg-resume lg:items-center lg:grid lg:min-h-small-screen">
@@ -43,7 +45,7 @@ const {
                 <Fragment set:html={image} />
               ) : (
                 <Picture
-                  src={image.src}
+                  src={src}
                   alt={image.alt}
                   class="mx-auto lg:rounded-[4rem] md:rounded-[3rem] rounded-[2rem] lg:w-full lg:max-w-[400px] md:w-[70%] w-[90%] lg:mb-0 mb-8 lg:aspect-[2/3] aspect-[3/2] object-cover object-[left_50%_top_50%] shadow-stone-600/50 dark:shadow-slate-500/50 shadow-4xl"
                   widths={[768, 1500, 2500, 3000]}
@@ -53,7 +55,7 @@ const {
                   width={600}
                   height={900}
                   format="webp"
-                  style={await blurHashImage(image.src)}
+                  style={await blurHashImage(src)}
                 />
               )}
             </div>

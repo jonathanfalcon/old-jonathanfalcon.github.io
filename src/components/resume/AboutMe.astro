@@ -2,11 +2,13 @@
 import {Picture} from "@astrojs/image/components";
 import { Icon } from 'astro-icon';
 import blurHashImage from '../../utils/blur'
+import {findImage} from '~/utils/images'
 
 const { image, name, title, aboutText, experience, education, certifications, skills } = Astro.props;
 
 const cardStyle = "bg-white dark:bg-slate-800 border border-transparent dark:border-slate-750 rounded-2xl shadow-md sm:p-10 p-5";
 
+const {src} = await findImage(image.src)
 ---
 
 
@@ -22,10 +24,10 @@ const cardStyle = "bg-white dark:bg-slate-800 border border-transparent dark:bor
         width={150}
         height={150}
         format="webp"
-        src={image.src}
+        src={src}
         alt={image.alt}
         title={name}
-        style={await blurHashImage(image.src)}
+        style={await blurHashImage(src)}
       />
       <div>
         <p class="text-3xl font-serif font-black">{name}</p>
