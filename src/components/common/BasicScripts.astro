@@ -63,8 +63,10 @@ import { SITE } from '~/config.mjs';
       const header = document.getElementById('header');
       if (lastKnownScrollPosition > 40 && !header.classList.contains('scroll')) {
         document.getElementById('header').classList.add('scroll');
+        document.getElementById('header').children[0].classList.remove('md:py-6');
       } else if (lastKnownScrollPosition <= 40 && header.classList.contains('scroll')) {
         document.getElementById('header').classList.remove('scroll');
+        document.getElementById('header').children[0].classList.add('md:py-6');
       }
       ticking = false;
     }
