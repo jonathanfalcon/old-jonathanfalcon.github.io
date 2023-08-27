@@ -8,5 +8,6 @@ const {src, aspectRatio = '16:9', alt} = Astro.props;
          widths={[900, 1400, 2000]}
          aspectRatio={aspectRatio}
          alt={alt}
+         decoding='async'
          style={`aspect-ratio: ${aspectRatio.replace(':', '/')}; ${await blurHashImage(src.src)}`}
 />
