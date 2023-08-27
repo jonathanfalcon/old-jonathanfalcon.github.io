@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
+import blurHashImage from '../../utils/blur'
 
 interface CallToAction {
   text: string;
@@ -8,12 +9,17 @@ interface CallToAction {
   icon?: string;
 }
 
+interface ImageInfo {
+  src: string;
+  alt: string;
+}
+
 export interface Props {
   title?: string;
   subtitle?: string;
   callToAction?: string | CallToAction;
   callToAction2?: string | CallToAction;
-  image?: string | any; // TODO: find HTMLElementProps
+  image?: string | ImageInfo; // TODO: find HTMLElementProps
 }
 
 const {
@@ -28,7 +34,7 @@ const {
 
 <section class="relative dark:bg-resume-dark bg-resume lg:items-center lg:grid lg:min-h-small-screen">
   <div class="relative max-w-[88rem] mx-auto px-4 sm:px-6">
-    <div class="lg:flex lg:flex-row-reverse lg:items-center lg:gap-8 py-8">
+    <div class="lg:flex lg:flex-row-reverse lg:items-center lg:gap-8 py-12">
       <div class="basis-2/5">
         {
           image && (
@@ -37,6 +43,8 @@ const {
                 <Fragment set:html={image} />
               ) : (
                 <Picture
+                  src={image.src}
+                  alt={image.alt}
                   class="mx-auto lg:rounded-[4rem] md:rounded-[3rem] rounded-[2rem] lg:w-full lg:max-w-[400px] md:w-[70%] w-[90%] lg:mb-0 mb-8 lg:aspect-[2/3] aspect-[3/2] object-cover object-[left_50%_top_50%] shadow-stone-600/50 dark:shadow-slate-500/50 shadow-4xl"
                   widths={[768, 1500, 2500, 3000]}
                   sizes="(max-width: 1499px) 768px, (max-width: 2499px) 1500px, (max-width: 2999px) 2500px, 3000px"
@@ -45,7 +53,7 @@ const {
                   width={600}
                   height={900}
                   format="webp"
-                  {...image}
+                  style={await blurHashImage(image.src)}
                 />
               )}
             </div>

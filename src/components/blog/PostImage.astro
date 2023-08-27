@@ -9,6 +9,5 @@ const {src, aspectRatio = '16:9', alt} = Astro.props;
          aspectRatio={aspectRatio}
          format="webp"
          alt={alt}
-         class={`bg-cover`}
-         style={`aspect-ratio: ${aspectRatio.replace(':', '/')}; background-image: url(${await blurHashImage(src.src)});`}
+         style={`aspect-ratio: ${aspectRatio.replace(':', '/')}; ${await blurHashImage(src.src)}`}
 />

@@ -1,8 +1,9 @@
 ---
 import {Picture} from "@astrojs/image/components";
 import { Icon } from 'astro-icon';
+import blurHashImage from '../../utils/blur'
 
-const { profileImage, profileAlt, name, title, aboutText, experience, education, certifications, skills } = Astro.props;
+const { image, name, title, aboutText, experience, education, certifications, skills } = Astro.props;
 
 const cardStyle = "bg-white dark:bg-slate-800 border border-transparent dark:border-slate-750 rounded-2xl shadow-md sm:p-10 p-5";
 
@@ -63,14 +64,15 @@ const cardStyle = "bg-white dark:bg-slate-800 border border-transparent dark:bor
         class="rounded-xl mx-auto aspect-square object-cover object-[left_50%_top_50%] xl:w-[200px]"
         widths={[300, 400, 800]}
         sizes="(max-width: 299px) 300px, (max-width: 799px) 400px, 800px"
-        aspectRatio={1/1}
+        aspectRatio={1}
         loading="eager"
         width={150}
         height={150}
         format="webp"
-        src={profileImage}
-        alt={profileAlt}
+        src={image.src}
+        alt={image.alt}
         title={name}
+        style={await blurHashImage(image.src)}
       />
       <div>
         <p class="text-3xl font-serif font-black">{name}</p>

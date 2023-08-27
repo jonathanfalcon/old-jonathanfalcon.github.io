@@ -17,17 +17,26 @@ const meta = {
 <Layout {meta}>
 
   <Hero3
-    callToAction={{ text: "Let's Connect", href: 'https://www.linkedin.com/in/jqfalcon/', icon: 'simple-icons:linkedin' }}
-    callToAction2={{ text: 'Why Me?', href: '#why-me', icon: 'ph:arrow-down-bold'}}
-    image={{ src: import('../assets/images/profile.jpg'), alt: 'Jonathan Falcon smiling and not looking directly at camera. Backdrop is of Texas State University' }}
+    callToAction={{
+      text: "Let's Connect",
+      href: 'https://www.linkedin.com/in/jqfalcon/',
+      icon: 'simple-icons:linkedin'
+    }}
+    callToAction2={{
+      text: 'Why Me?',
+      href: '#why-me',
+      icon: 'ph:arrow-down-bold'
+    }}
+    image={{
+      src: 'src/assets/images/profile.jpg',
+      alt: 'Jonathan Falcon smiling and not looking directly at camera. Backdrop is of Texas State University'
+    }}
     subtitle="As a marketing analyst, I leverage my multidisciplinary background to give you the most holistic understanding of your customers."
   >
     <Fragment slot="title">
       Hi, I'm <br />
       <span class="text-primary-700 dark:text-primary-500"> Jonathan Falcon</span>
     </Fragment>
-
-    
   </Hero3>
 
   <Features

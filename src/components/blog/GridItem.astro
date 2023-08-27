@@ -24,7 +24,7 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
         {image && (
           <Picture
             src={image}
-            class="w-full h-full rounded-2xl shadow-xl bg-cover aspect-video"
+            class="w-full h-full rounded-2xl shadow-xl aspect-video"
             widths={[400, 900, 1400]}
             sizes="(max-width: 900px) 400px, (max-width: 1400px) 900px, 1400px"
             alt={post.title}
@@ -32,7 +32,7 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
             format="webp"
             loading="lazy"
             decoding="async"
-            style={`background-image: url(${await blurHashImage(image.src)});`}
+            style={await blurHashImage(image.src)}
           />
         )}
       </div>
