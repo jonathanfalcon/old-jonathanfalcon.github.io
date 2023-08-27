@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
-import compress from 'astro-compress';
+import Compress from 'astro-compress';
 
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 import remarkMath from 'remark-math';
@@ -55,14 +55,14 @@ export default defineConfig({
       })
     ),
 
-    compress({
-      css: true,
-      html: {
+    Compress({
+      CSS: true,
+      HTML: {
         removeAttributeQuotes: false,
       },
-      img: false,
-      js: true,
-      svg: false,
+      Image: false,
+      JavaScript: true,
+      SVG: false,
 
       logger: 1,
     }),
